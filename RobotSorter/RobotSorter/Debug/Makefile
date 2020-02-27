@@ -32,11 +32,13 @@ LIB_DEP:=
 LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
-SUBDIRS := 
+SUBDIRS :=  \
+../ColorSensor
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../ColorSensor/ColorSensor.cpp \
 ../main.cpp
 
 
@@ -47,15 +49,19 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+ColorSensor/ColorSensor.o \
 main.o
 
 OBJS_AS_ARGS +=  \
+ColorSensor/ColorSensor.o \
 main.o
 
 C_DEPS +=  \
+ColorSensor/ColorSensor.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
+ColorSensor/ColorSensor.d \
 main.d
 
 OUTPUT_FILE_PATH +=RobotSorter.elf
@@ -72,6 +78,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+ColorSensor/ColorSensor.o: ../ColorSensor/ColorSensor.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./main.o: .././main.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
