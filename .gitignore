@@ -1,3 +1,6 @@
+#Visual studio folder
+.vs/
+
 # Prerequisites
 *.d
 
