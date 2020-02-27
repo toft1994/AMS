@@ -6,7 +6,7 @@
  */ 
 
 #include <stdint.h>
-#include "ColorSensor.h"
+#include "ColorSensor/header/ColorSensor.h"
 
 ColorSensor::ColorSensor()
 {

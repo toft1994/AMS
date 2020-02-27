@@ -143,19 +143,19 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ColorSensor\ColorSensor.cpp">
+    <Compile Include="ColorSensor\header\ColorSensor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ColorSensor\ColorSensor.h">
+    <Compile Include="ColorSensor\header\timer1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ColorSensor\source\ColorSensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ColorSensor\source\timer1.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="IO.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="KeyPad\KeyPad.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="KeyPad\KeyPad.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
@@ -164,7 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ColorSensor" />
-    <Folder Include="KeyPad" />
+    <Folder Include="ColorSensor\header" />
+    <Folder Include="ColorSensor\source" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
