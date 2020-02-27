@@ -1,6 +1,10 @@
 #Visual studio folder
 .vs/
 
+#Project 
+*.cppproj
+*.xml
+
 # Prerequisites
 *.d
 
