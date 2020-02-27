@@ -32,6 +32,26 @@
 #define COLORSENSOR_S3_PORT = PORTA
 #define COLORSENSOR_OUT_PORT = PORTA
 
+
+/* Matrix KeyPad */
+#define KEYPAD_PIN_0 = BIT1
+#define KEYPAD_PIN_1 = BIT2
+#define KEYPAD_PIN_2 = BIT3
+#define KEYPAD_PIN_3 = BIT4
+#define KEYPAD_PIN_4 = BIT5
+#define KEYPAD_PIN_5 = BIT6
+#define KEYPAD_PIN_6 = BIT7
+#define KEYPAD_PIN_7 = BIT8
+
+#define KEYPAD_PORT_0 = PORTA
+#define KEYPAD_PORT_1 = PORTB
+#define KEYPAD_PORT_2 = PORTB
+#define KEYPAD_PORT_3 = PORTB
+#define KEYPAD_PORT_4 = PORTB
+#define KEYPAD_PORT_5 = PORTB
+#define KEYPAD_PORT_6 = PORTB
+#define KEYPAD_PORT_7 = PORTB
+
 /* xxxx */
 
 #endif /* IO_H_ */
