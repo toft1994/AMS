@@ -5,38 +5,67 @@
  *  Author: jespe
  */ 
 
-#include <stdint.h>
-#include "ColorSensor/header/ColorSensor.h"
+#include "../header/ColorSensor.h"
+#include <avr/io.h>
 
 ColorSensor::ColorSensor()
 {
-	
+	DDRC = 0xFF;
+	DDRD = 0x00;
+	frequency_ = timer4();
+
+	setFilter( noFilter );
+	setFrequencyscaling( twentyPercent );
 }
 
 color ColorSensor::getColor()
 {
 	color result = error;
-
 	
+	volatile uint16_t redpwm = 0U;
+	volatile uint16_t bluepwm = 0U;
+	volatile uint16_t greenpwm = 0U;
 
-	return 
+	setFilter( redFilter );
+	redpwm = frequency_.getPwm();
+
+	setFilter( blueFilter );
+	bluepwm = frequency_.getPwm();
+
+	setFilter( greenFilter );
+	greenpwm = frequency_.getPwm();
+
+	if ( redpwm > bluepwm && redpwm > greenpwm )
+	{
+		result = red;
+	}
+	else if ( bluepwm > redpwm && redpwm > greenpwm )
+	{
+		result = blue;
+	}
+	else if ( greenpwm > bluepwm && greenpwm > redpwm )
+	{
+		result = green;
+	}
+
+	return result;
 }
 
 void ColorSensor::setFilter( filter filter_ )
 {
 	switch ( filter_ )
 	{
-	case red:
+	case redFilter:
 		COLORSENSOR_S2_PORT &= ~( COLORSENSOR_S2_PIN );
 		COLORSENSOR_S3_PORT &= ~( COLORSENSOR_S3_PIN );
 		break;
 
-	case blue:
+	case blueFilter:
 		COLORSENSOR_S2_PORT &= ~( COLORSENSOR_S2_PIN );
 		COLORSENSOR_S3_PORT |= COLORSENSOR_S3_PIN;
 		break;
 
-	case green:
+	case greenFilter:
 		COLORSENSOR_S2_PORT |= COLORSENSOR_S2_PIN;
 		COLORSENSOR_S3_PORT |= COLORSENSOR_S3_PIN;
 		break;
@@ -72,10 +101,10 @@ void ColorSensor::setFrequencyscaling( FrequencyScaling scaling )
 
 	case hundredPercent:
 		COLORSENSOR_S0_PORT |= COLORSENSOR_S0_PIN;
-		COLORSENSOR_S1_PORT |= COLORSENSOR_S1_PIN:
+		COLORSENSOR_S1_PORT |= COLORSENSOR_S1_PIN;
 		break;
 	default:
 		/* Do nothing! */
-		break:
+		break;
 	}
 }

@@ -5,6 +5,9 @@
  *  Author: jespe
  */ 
 
+#include <stdint.h>
+#include "timer4.h"
+#include "../../IO.h"
 
 #ifndef COLORSENSOR_H_
 #define COLORSENSOR_H_
@@ -28,9 +31,9 @@ enum color
 enum filter
 {
 	noFilter,
-	red,
-	green,
-	blue,
+	redFilter,
+	greenFilter,
+	blueFilter,
 };
 
 class ColorSensor
@@ -40,8 +43,10 @@ class ColorSensor
 	color getColor( void );
 	
 	private:
-	void setFilter( uint8_t filter );
+	void setFilter( filter filter_ );
 	void setFrequencyscaling( FrequencyScaling scaling );
+
+	timer4 frequency_;
 };
 
 #endif /* COLORSENSOR_H_ */
