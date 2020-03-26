@@ -6,52 +6,100 @@
  */ 
 
 #include "../header/ColorSensor.h"
+#include "../header/timer4.h"
 #include <avr/io.h>
 
-ColorSensor::ColorSensor()
+// default constructor
+ColorSensor::ColorSensor( FrequencyScaling scaling )
 {
 	DDRC = 0xFF;
 	DDRD = 0x00;
 	frequency_ = timer4();
 
 	setFilter( noFilter );
-	setFrequencyscaling( twentyPercent );
+	setFrequencyscaling( scaling );
 }
 
-color ColorSensor::getColor()
+// default destructor
+ColorSensor::~ColorSensor()
+{	
+}
+
+uint8_t ColorSensor::getColor()
 {
-	color result = error;
+	//color result = error;
 	
-	volatile uint16_t redpwm = 0U;
-	volatile uint16_t bluepwm = 0U;
-	volatile uint16_t greenpwm = 0U;
+	volatile uint32_t redpwm = 0U;
+	volatile uint32_t bluepwm = 0U;
+	volatile uint32_t greenpwm = 0U;
 
 	setFilter( redFilter );
-	redpwm = frequency_.getPwm();
+	redpwm = frequency_.getPwm() - _backgroundBasis.getRedPwm();
 
 	setFilter( blueFilter );
-	bluepwm = frequency_.getPwm();
+	bluepwm = frequency_.getPwm() - _backgroundBasis.getBluePwm();  
 
 	setFilter( greenFilter );
-	greenpwm = frequency_.getPwm();
+	greenpwm = frequency_.getPwm() - _backgroundBasis.getGreenPwm();
+	
+	for ( uint8_t index = 0U; index < 10; index++)
+	{
+		uint32_t storedRed = _colors[index].getRedPwm();
+		uint32_t storedBlue = _colors[index].getBluePwm();
+		uint32_t storedGreen = _colors[index].getGreenPwm();		
+		
+		if ( storedRed + 5000 > redpwm && storedRed - 5000 < redpwm )
+		{
+			if ( storedBlue + 5000 > bluepwm && storedBlue - 5000 < bluepwm )
+			{
+				if ( storedGreen + 5000 > greenpwm && storedGreen - 5000 < greenpwm )
+				{
+					return index;
+					break;
+				}
+			}
+		}
+	}
 
-	if ( redpwm > bluepwm && redpwm > greenpwm )
-	{
-		result = red;
-	}
-	else if ( bluepwm > redpwm && redpwm > greenpwm )
-	{
-		result = blue;
-	}
-	else if ( greenpwm > bluepwm && greenpwm > redpwm )
-	{
-		result = green;
-	}
-
-	return result;
+	return 255;
 }
 
-void ColorSensor::setFilter( filter filter_ )
+void ColorSensor::setBackgroundBasis( void )
+{
+	setFilter(redFilter);
+	_backgroundBasis.setRedPwm( frequency_.getPwm() - 3000U );
+	
+	setFilter(blueFilter);
+	_backgroundBasis.setBluePwm( frequency_.getPwm() - 3000U );
+	
+	setFilter(greenFilter);
+	_backgroundBasis.setGreenPwm( frequency_.getPwm() - 3000U );
+}
+
+void ColorSensor::addCalibrateColor( uint8_t colorIndex )
+{
+	if ( colorIndex < 10U )
+	{
+		// Set all colors
+		setFilter( redFilter );
+		_colors[colorIndex].setRedPwm( frequency_.getPwm() - _backgroundBasis.getRedPwm() );
+
+		setFilter( blueFilter );
+		_colors[colorIndex].setBluePwm( frequency_.getPwm() - _backgroundBasis.getBluePwm() );
+		
+		setFilter( greenFilter );
+		_colors[colorIndex].setGreenPwm( frequency_.getPwm() - _backgroundBasis.getGreenPwm() );
+		
+		// Set index
+		_colors[colorIndex].setColorIndex(colorIndex);
+	}
+	else
+	{
+		/* Cant add more colors. Increase size of array. */
+	}
+}
+
+void ColorSensor::setFilter( Filter filter_ )
 {
 	switch ( filter_ )
 	{
