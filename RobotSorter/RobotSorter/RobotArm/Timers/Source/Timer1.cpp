@@ -5,10 +5,10 @@
  *  Author: jespe
  */ 
 
-#include "../Header/Timer1.h"
+#include "Timer1.h"
 #include <avr/io.h>
 
-timer1::timer1()
+Timer1::Timer1()
 {
 	// Set B5 to output
 	DDRB = DDRB | ( 1 << 5 ) | ( 1 << 6 ) | ( 1 << 7 );
@@ -24,19 +24,19 @@ timer1::timer1()
 	OCR1C = 0;
 }
 
-void timer1::setDutyCycleComA( float dutyCycle )
+void Timer1::setDutyCycleComA( float dutyCycle )
 {
 	volatile float percent = ICR1/100;
 	OCR1A = (uint8_t)percent*dutyCycle;
 }
 
-void timer1::setDutyCycleComB( float dutyCycle )
+void Timer1::setDutyCycleComB( float dutyCycle )
 {
 	volatile float percent = ICR1/100;
 	OCR1B = (uint8_t)percent*dutyCycle;
 }
 
-void timer1::setDutyCycleComC( float dutyCycle )
+void Timer1::setDutyCycleComC( float dutyCycle )
 {
 	volatile float percent = ICR1/100;
 	OCR1C = (uint8_t)percent*dutyCycle;

@@ -36,6 +36,12 @@ SUBDIRS :=  \
 ../ColorSensor \
 ../ColorSensor/header \
 ../ColorSensor/source \
+../RobotArm/Motor \
+../RobotArm/Motor/Header \
+../RobotArm/Motor/Source \
+../RobotArm/Timers \
+../RobotArm/Timers/Header \
+../RobotArm/Timers/Source \
 ../Source \
 ../Source/include \
 ../Source/portable \
@@ -44,8 +50,6 @@ SUBDIRS :=  \
 ../Source/portable/GCC \
 ../TouchDisplay \
 ../RobotArm \
-../RobotArm/Header \
-../RobotArm/Source \
 ../TouchDisplay/Header \
 ../TouchDisplay/Source
 
@@ -56,9 +60,15 @@ C_SRCS +=  \
 ../ColorSensor/source/ColorSensor.cpp \
 ../ColorSensor/source/timer4.cpp \
 ../main.cpp \
-../RobotArm/Source/RobotArm.cpp \
-../RobotArm/Source/Timer1.cpp \
-../RobotArm/Source/Timer3.cpp \
+../RobotArm/Motor/Source/M1.cpp \
+../RobotArm/Motor/Source/M2.cpp \
+../RobotArm/Motor/Source/M3.cpp \
+../RobotArm/Motor/Source/M4.cpp \
+../RobotArm/Motor/Source/M5.cpp \
+../RobotArm/Motor/Source/M6.cpp \
+../RobotArm/RobotArm.cpp \
+../RobotArm/Timers/Source/Timer1.cpp \
+../RobotArm/Timers/Source/Timer3.cpp \
 ../RTOS_HH.c \
 ../Source/croutine.c \
 ../Source/list.c \
@@ -80,9 +90,15 @@ ColorSensor/source/Color.o \
 ColorSensor/source/ColorSensor.o \
 ColorSensor/source/timer4.o \
 main.o \
-RobotArm/Source/RobotArm.o \
-RobotArm/Source/Timer1.o \
-RobotArm/Source/Timer3.o \
+RobotArm/Motor/Source/M1.o \
+RobotArm/Motor/Source/M2.o \
+RobotArm/Motor/Source/M3.o \
+RobotArm/Motor/Source/M4.o \
+RobotArm/Motor/Source/M5.o \
+RobotArm/Motor/Source/M6.o \
+RobotArm/RobotArm.o \
+RobotArm/Timers/Source/Timer1.o \
+RobotArm/Timers/Source/Timer3.o \
 RTOS_HH.o \
 Source/croutine.o \
 Source/list.o \
@@ -97,9 +113,15 @@ ColorSensor/source/Color.o \
 ColorSensor/source/ColorSensor.o \
 ColorSensor/source/timer4.o \
 main.o \
-RobotArm/Source/RobotArm.o \
-RobotArm/Source/Timer1.o \
-RobotArm/Source/Timer3.o \
+RobotArm/Motor/Source/M1.o \
+RobotArm/Motor/Source/M2.o \
+RobotArm/Motor/Source/M3.o \
+RobotArm/Motor/Source/M4.o \
+RobotArm/Motor/Source/M5.o \
+RobotArm/Motor/Source/M6.o \
+RobotArm/RobotArm.o \
+RobotArm/Timers/Source/Timer1.o \
+RobotArm/Timers/Source/Timer3.o \
 RTOS_HH.o \
 Source/croutine.o \
 Source/list.o \
@@ -114,9 +136,15 @@ ColorSensor/source/Color.d \
 ColorSensor/source/ColorSensor.d \
 ColorSensor/source/timer4.d \
 main.d \
-RobotArm/Source/RobotArm.d \
-RobotArm/Source/Timer1.d \
-RobotArm/Source/Timer3.d \
+RobotArm/Motor/Source/M1.d \
+RobotArm/Motor/Source/M2.d \
+RobotArm/Motor/Source/M3.d \
+RobotArm/Motor/Source/M4.d \
+RobotArm/Motor/Source/M5.d \
+RobotArm/Motor/Source/M6.d \
+RobotArm/RobotArm.d \
+RobotArm/Timers/Source/Timer1.d \
+RobotArm/Timers/Source/Timer3.d \
 RTOS_HH.d \
 Source/croutine.d \
 Source/list.d \
@@ -131,9 +159,15 @@ ColorSensor/source/Color.d \
 ColorSensor/source/ColorSensor.d \
 ColorSensor/source/timer4.d \
 main.d \
-RobotArm/Source/RobotArm.d \
-RobotArm/Source/Timer1.d \
-RobotArm/Source/Timer3.d \
+RobotArm/Motor/Source/M1.d \
+RobotArm/Motor/Source/M2.d \
+RobotArm/Motor/Source/M3.d \
+RobotArm/Motor/Source/M4.d \
+RobotArm/Motor/Source/M5.d \
+RobotArm/Motor/Source/M6.d \
+RobotArm/RobotArm.d \
+RobotArm/Timers/Source/Timer1.d \
+RobotArm/Timers/Source/Timer3.d \
 RTOS_HH.d \
 Source/croutine.d \
 Source/list.d \
@@ -160,49 +194,91 @@ LINKER_SCRIPT_DEP+=
 ColorSensor/source/Color.o: ../ColorSensor/source/Color.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ColorSensor/source/ColorSensor.o: ../ColorSensor/source/ColorSensor.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ColorSensor/source/timer4.o: ../ColorSensor/source/timer4.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-RobotArm/Source/RobotArm.o: ../RobotArm/Source/RobotArm.cpp
+RobotArm/Motor/Source/M1.o: ../RobotArm/Motor/Source/M1.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-RobotArm/Source/Timer1.o: ../RobotArm/Source/Timer1.cpp
+RobotArm/Motor/Source/M2.o: ../RobotArm/Motor/Source/M2.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-RobotArm/Source/Timer3.o: ../RobotArm/Source/Timer3.cpp
+RobotArm/Motor/Source/M3.o: ../RobotArm/Motor/Source/M3.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+RobotArm/Motor/Source/M4.o: ../RobotArm/Motor/Source/M4.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+RobotArm/Motor/Source/M5.o: ../RobotArm/Motor/Source/M5.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+RobotArm/Motor/Source/M6.o: ../RobotArm/Motor/Source/M6.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+RobotArm/RobotArm.o: ../RobotArm/RobotArm.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+RobotArm/Timers/Source/Timer1.o: ../RobotArm/Timers/Source/Timer1.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+RobotArm/Timers/Source/Timer3.o: ../RobotArm/Timers/Source/Timer3.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

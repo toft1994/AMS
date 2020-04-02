@@ -10,11 +10,23 @@ ColorSensor\source\timer4.cpp
 
 main.cpp
 
-RobotArm\Source\RobotArm.cpp
+RobotArm\Motor\Source\M1.cpp
 
-RobotArm\Source\Timer1.cpp
+RobotArm\Motor\Source\M2.cpp
 
-RobotArm\Source\Timer3.cpp
+RobotArm\Motor\Source\M3.cpp
+
+RobotArm\Motor\Source\M4.cpp
+
+RobotArm\Motor\Source\M5.cpp
+
+RobotArm\Motor\Source\M6.cpp
+
+RobotArm\RobotArm.cpp
+
+RobotArm\Timers\Source\Timer1.cpp
+
+RobotArm\Timers\Source\Timer3.cpp
 
 RTOS_HH.c
 

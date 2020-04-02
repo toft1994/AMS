@@ -143,9 +143,12 @@
       <Value>../Source/include</Value>
       <Value>..</Value>
       <Value>../Source/portable/GCC/ATMega2560</Value>
+      <Value>../ColorSensor/header</Value>
+      <Value>../RobotArm/Motor/Header</Value>
+      <Value>../RobotArm/Timers/Header</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
-  <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcccpp.compiler.optimization.level>
   <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
   <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
   <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
@@ -192,22 +195,61 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="RobotArm\Header\RobotArm.h">
+    <Compile Include="RobotArm\Motor\Header\M1.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="RobotArm\Header\Timer1.h">
+    <Compile Include="RobotArm\Motor\Header\M2.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="RobotArm\Header\Timer3.h">
+    <Compile Include="RobotArm\Motor\Header\M3.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="RobotArm\Source\RobotArm.cpp">
+    <Compile Include="RobotArm\Motor\Header\M4.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="RobotArm\Source\Timer1.cpp">
+    <Compile Include="RobotArm\Motor\Header\M5.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="RobotArm\Source\Timer3.cpp">
+    <Compile Include="RobotArm\Motor\Header\M6.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Motor\Header\Motor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Motor\Source\M1.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Motor\Source\M2.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Motor\Source\M3.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Motor\Source\M4.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Motor\Source\M5.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Motor\Source\M6.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\RobotArm.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\RobotArm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Timers\Header\Timer1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Timers\Header\Timer3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Timers\Source\Timer1.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotArm\Timers\Source\Timer3.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="RTOS_HH.c">
@@ -242,6 +284,12 @@
     <Folder Include="ColorSensor" />
     <Folder Include="ColorSensor\header" />
     <Folder Include="ColorSensor\source" />
+    <Folder Include="RobotArm\Motor" />
+    <Folder Include="RobotArm\Motor\Header" />
+    <Folder Include="RobotArm\Motor\Source" />
+    <Folder Include="RobotArm\Timers" />
+    <Folder Include="RobotArm\Timers\Header" />
+    <Folder Include="RobotArm\Timers\Source" />
     <Folder Include="Source" />
     <Folder Include="Source\include" />
     <Folder Include="Source\portable" />
@@ -250,8 +298,6 @@
     <Folder Include="Source\portable\GCC" />
     <Folder Include="TouchDisplay" />
     <Folder Include="RobotArm" />
-    <Folder Include="RobotArm\Header" />
-    <Folder Include="RobotArm\Source" />
     <Folder Include="TouchDisplay\Header" />
     <Folder Include="TouchDisplay\Source" />
   </ItemGroup>

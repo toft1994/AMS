@@ -5,8 +5,8 @@
  *  Author: jespe
  */ 
 
-#include "../header/ColorSensor.h"
-#include "../header/timer4.h"
+#include "ColorSensor.h"
+#include "timer4.h"
 #include <avr/io.h>
 
 // default constructor
@@ -29,9 +29,9 @@ uint8_t ColorSensor::getColor()
 {
 	//color result = error;
 	
-	volatile uint32_t redpwm = 0U;
-	volatile uint32_t bluepwm = 0U;
-	volatile uint32_t greenpwm = 0U;
+	uint32_t redpwm = 0U;
+	uint32_t bluepwm = 0U;
+	uint32_t greenpwm = 0U;
 
 	setFilter( redFilter );
 	redpwm = frequency_.getPwm() - _backgroundBasis.getRedPwm();
@@ -67,13 +67,13 @@ uint8_t ColorSensor::getColor()
 void ColorSensor::setBackgroundBasis( void )
 {
 	setFilter(redFilter);
-	_backgroundBasis.setRedPwm( frequency_.getPwm() - 3000U );
+	_backgroundBasis.setRedPwm( frequency_.getPwm() - 1000U );
 	
 	setFilter(blueFilter);
-	_backgroundBasis.setBluePwm( frequency_.getPwm() - 3000U );
+	_backgroundBasis.setBluePwm( frequency_.getPwm() - 1000U );
 	
 	setFilter(greenFilter);
-	_backgroundBasis.setGreenPwm( frequency_.getPwm() - 3000U );
+	_backgroundBasis.setGreenPwm( frequency_.getPwm() - 1000U );
 }
 
 void ColorSensor::addCalibrateColor( uint8_t colorIndex )

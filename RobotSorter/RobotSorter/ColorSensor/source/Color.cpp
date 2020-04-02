@@ -6,7 +6,7 @@
 */
 
 
-#include "../header/Color.h"
+#include "Color.h"
 #include <string.h>
 
 // default constructor

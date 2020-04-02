@@ -7,13 +7,13 @@
 
 #include <stdint.h>
 #include "timer4.h"
-#include "../../IO.h"
+#include "IO.h"
 #include "Color.h"
 
 #ifndef COLORSENSOR_H_
 #define COLORSENSOR_H_
 
-enum FrequencyScaling
+typedef enum FrequencyScaling
 {
 	powerDown,
 	twoPercent,
@@ -21,7 +21,7 @@ enum FrequencyScaling
 	hundredPercent,	
 };
 
-enum Filter
+typedef enum Filter
 {
 	noFilter,
 	redFilter,

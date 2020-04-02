@@ -4,36 +4,69 @@
  * Created: 27-02-2020 09:09:45
  * Author : jespe
  */ 
-//#define F_CPU 16000000
+#define F_CPU 16000000
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include "ColorSensor/header/ColorSensor.h"
-#include "RobotArm/Header/RobotArm.h"
+#include "ColorSensor.h"
+#include "RobotArm/RobotArm.h"
 
 /* RTOS include */
 #include "FreeRTOS.h"
 #include "task.h"
 #include "portmacro.h"
 
+extern "C" void __cxa_pure_virtual() { while (1); }
+	
+ColorSensor csensor = ColorSensor( hundredPercent );
+
 void FirstTask( void *pvParameters )
 {
-			Robotarm* ptr = (Robotarm*) pvParameters;
-		ptr->grabBlock();
+	Robotarm* armptr = (Robotarm*) pvParameters;	 
+
+	csensor.setBackgroundBasis();
+	csensor.addCalibrateColor( 0U );
+	csensor.addCalibrateColor( 1U );
+	//csensor.addCalibrateColor( 2U );
+		 
 	while(1)
-	{
-		ptr->grabBlock();
-	 	vTaskDelay( 5000 / portTICK_RATE_MS );
-		ptr->moveBlockToZoneOne();
-	 	vTaskDelay( 5000 / portTICK_RATE_MS );
+	{		
+		uint8_t color = 1U;//csensor.getColor();
+		switch ( color )
+		{
+			case 1U:
+				armptr->grabBlock();
+				vTaskDelay( 5000 / portTICK_RATE_MS );
+				armptr->moveBlockToZoneOne();
+				vTaskDelay( 5000 / portTICK_RATE_MS );
+				break;
+				
+			case 2U: 
+				armptr->grabBlock();
+				vTaskDelay( 5000 / portTICK_RATE_MS );
+				armptr->moveBlockToZoneTwo();
+				vTaskDelay( 5000 / portTICK_RATE_MS );
+				break;
+				
+			case 3U:
+				armptr->grabBlock();
+				vTaskDelay( 5000 / portTICK_RATE_MS );
+				armptr->moveBlockToZoneThree();
+				vTaskDelay( 5000 / portTICK_RATE_MS );
+				break;
+				
+			case 255U:
+				break;
+				
+		}
 	}
 }
 
 int main(void)
 {
 	Robotarm arm = Robotarm();
-	
-	volatile uint8_t test = xTaskCreate(FirstTask,  ( signed char * ) "Task", configMINIMAL_STACK_SIZE, &arm, tskIDLE_PRIORITY, NULL);
+
+	xTaskCreate(FirstTask,  ( signed char * ) "Task", configMINIMAL_STACK_SIZE, &arm, tskIDLE_PRIORITY, NULL);
 	vTaskStartScheduler();
 
 	while (1)
