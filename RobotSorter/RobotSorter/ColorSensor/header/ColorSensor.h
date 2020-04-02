@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include "timer4.h"
 #include "../../IO.h"
+#include "Color.h"
 
 #ifndef COLORSENSOR_H_
 #define COLORSENSOR_H_
@@ -20,15 +21,7 @@ enum FrequencyScaling
 	hundredPercent,	
 };
 
-enum color
-{
-	red,
-	green,
-	blue,
-	error,
-};
-
-enum filter
+enum Filter
 {
 	noFilter,
 	redFilter,
@@ -38,15 +31,25 @@ enum filter
 
 class ColorSensor
 {
-	public:
-	ColorSensor();
-	color getColor( void );
-	
-	private:
-	void setFilter( filter filter_ );
-	void setFrequencyscaling( FrequencyScaling scaling );
-
+//variables
+public:
+protected:
+private:
 	timer4 frequency_;
+	Color _colors[10];
+	Color _backgroundBasis;
+	
+//functions
+public:
+	ColorSensor( FrequencyScaling scaling );
+	~ColorSensor();
+	uint8_t getColor( void );
+	void addCalibrateColor( uint8_t colorIndex );
+	void setBackgroundBasis( void );
+protected:
+private:
+	void setFilter( Filter filter );
+	void setFrequencyscaling( FrequencyScaling scaling );
 };
 
 #endif /* COLORSENSOR_H_ */

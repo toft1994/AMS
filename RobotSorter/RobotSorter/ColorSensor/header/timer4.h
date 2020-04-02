@@ -19,5 +19,4 @@ class timer4
 	private:
 };
 
-
 #endif /* TIMER4_H_ */
