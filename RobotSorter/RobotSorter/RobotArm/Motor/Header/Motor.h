@@ -20,7 +20,7 @@
 
 /* Timer include */
 #include "Timer1.h"
-#include "Timer3.h"
+#include "Timer5.h"
 
 /* How many percent to move pr. tick. Lower value will make motors turn slower. */
 #define PERCENT_PR_TICK 0.0625
@@ -57,7 +57,7 @@ public:
 protected:
 	/* Needed timers for motors */
 	Timer1* tmr1Ptr_;
-	Timer3* tmr3Ptr_;
+	Timer5* tmr3Ptr_;
 	
 	/* Attributes needed to calculate degree to duty cycle */
 	float percentPrDeg;

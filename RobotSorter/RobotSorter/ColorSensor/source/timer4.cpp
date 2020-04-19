@@ -9,7 +9,12 @@
 #include "IO.h"
 #include <avr/interrupt.h>
 
-volatile uint32_t oldValue = 0U;
+/* RTOS include */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "portmacro.h"
+
+volatile uint16_t oldValue = 0U;
 volatile uint32_t timeroverflow = 0U;
 volatile uint16_t period = 0U;
 volatile bool first = true;
@@ -37,18 +42,13 @@ timer4::timer4()
 	TCCR4C = 0U;
 	
 	// Clear flags and set counter to zero
-	TIFR4 = ( 0 << ICF4 ) | ( 0 << TOV4 );
+	TIFR4 = ( 1 << ICF4 ) | ( 1 << TOV4 );
 	TCNT4 = 0;        
 
 	// Enable global interrupts
     sei();
 }
 
-#include "uart.h"
-/* RTOS include */
-#include "FreeRTOS.h"
-#include "task.h"
-#include "portmacro.h"
 uint16_t timer4::getPeriod( void )
 {
 	// Reset all needed values
@@ -58,26 +58,19 @@ uint16_t timer4::getPeriod( void )
 	timeroverflow = 0;
 	
 	// Enable interrupt and clear pending
-	TIFR4 = ( 0 << ICF4 ) | ( 0 << TOV4 );	
-	TIMSK4 = ( 1 << ICIE4 ) | ( 0 << TOIE4 );	
+	TIFR4 = ( 1 << ICF4 ) | ( 1 << TOV4 );
+	TIMSK4 = ( 1 << ICIE4 ) | ( 1 << TOIE4 );	
 	
 	// Wait until measurement has been taken
-	uint8_t timeout = 0U;
 	while ( period == 0U )
 	{
-		if ( timeout > 5U )
+		if ( timeroverflow > 10U )
 		{
-			// Disable interrupt and clear pending
+			// Error - Disable interrupt and clear pending
 			TIMSK4 = 0U;
-			TIFR4 = 0U;
+			TIFR4 = ( 1 << ICF4 ) | ( 1 << TOV4 );
 			break;
 		}
-		
-		// Delay for timeout
-		vTaskDelay( 1 / portTICK_RATE_MS );
-
-		// Increment timeout
-		timeout++;
 	}
 	
 	return period;
@@ -100,10 +93,16 @@ ISR(TIMER4_CAPT_vect)
 		first = false;
 		return;
 	}
+	
+	// Check if overflow is pending
+	if ( TIFR4 & ( 1 << TOV4 ))
+	{
+		timeroverflow++;
+	}
 		
 	// Disable interrupt and clear pending
 	TIMSK4 = 0U;	
-	TIFR4 = 0U;		
+	TIFR4 = ( 1 << ICF4 ) | ( 1 << TOV4 );		
 			
 	// Calculate difference
 	uint32_t diff = 0U;

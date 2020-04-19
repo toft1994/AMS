@@ -7,7 +7,7 @@
 
 #include "M4.h"
 
-M4::M4( Timer3* tmr )
+M4::M4( Timer5* tmr )
 {
 	/* Store timer pointer */
 	tmr3Ptr_ = tmr;

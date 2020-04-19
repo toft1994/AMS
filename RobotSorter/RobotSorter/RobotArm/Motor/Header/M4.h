@@ -14,7 +14,7 @@
 class M4 : public Motor
 {
 	public:
-	M4( Timer3 * tmr );
+	M4( Timer5 * tmr );
 	~M4();
 
 	/**

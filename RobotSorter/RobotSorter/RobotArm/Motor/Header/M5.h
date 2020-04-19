@@ -15,7 +15,7 @@ class M5 : public Motor
 {
 	//functions
 	public:
-	M5( Timer3 * tmr );
+	M5( Timer5 * tmr );
 	~M5();
 	
 	/**

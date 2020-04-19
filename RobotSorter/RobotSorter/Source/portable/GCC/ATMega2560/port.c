@@ -75,11 +75,11 @@ Changes from V2.6.0
 /* Start tasks with interrupts enables. */
 #define portFLAGS_INT_ENABLED					( ( portSTACK_TYPE ) 0x80 )
 
-/* Hardware constants for timer 1. */
-#define portCLEAR_COUNTER_ON_MATCH				( ( unsigned char ) 0b00001000 )
-#define portPRESCALE_64							( ( unsigned char ) 0b00000011 )
+/* Hardware constants for timer 0. */
+#define portCLEAR_COUNTER_ON_MATCH				( ( unsigned char ) ( 1 << WGM01 )
+#define portPRESCALE_64							( ( unsigned char ) ( 1 << CS00 ) | ( 1 << CS01 ) )
 #define portCLOCK_PRESCALER						( ( unsigned long ) 64 )
-#define portCOMPARE_MATCH_A_INTERRUPT_ENABLE	( ( unsigned char ) 0b00000010 )
+#define portCOMPARE_MATCH_A_INTERRUPT_ENABLE	( ( unsigned char ) ( 1 << OCIE0A ) )
 
 /*-----------------------------------------------------------*/
 
@@ -416,39 +416,29 @@ void vPortYieldFromTick( void )
  */
 static void prvSetupTimerInterrupt( void )
 {
-unsigned long ulCompareMatch;
-unsigned char ucHighByte, ucLowByte;
+	unsigned long ulCompareMatch;
 
-	/* Using 16bit timer 5 to generate the tick.  Correct fuses must be
+	/* Using 8bit timer 0 to generate the tick.  Correct fuses must be
 	selected for the configCPU_CLOCK_HZ clock. */
-
 	ulCompareMatch = configCPU_CLOCK_HZ / configTICK_RATE_HZ;
-
-	/* We only have 16 bits so have to scale to get our required tick rate. */
+	
+	/* We only have 8 bits so have to scale to get our required tick rate. */
 	ulCompareMatch /= portCLOCK_PRESCALER;
 
 	/* Adjust for correct value. */
 	ulCompareMatch -= ( unsigned long ) 1;
-
+	
 	/* Setup compare match value for compare match A.  Interrupts are disabled 
 	before this is called so we need not worry here. */
-	ucLowByte = ( unsigned char ) ( ulCompareMatch & ( unsigned long ) 0xff );
-	ulCompareMatch >>= 8;
-	ucHighByte = ( unsigned char ) ( ulCompareMatch & ( unsigned long ) 0xff );
-	OCR5AH = ucHighByte;
-	OCR5AL = ucLowByte;
+	OCR0A = 250U;
 
-	/* Setup clock source and compare match behaviour. */
-	ucLowByte = portCLEAR_COUNTER_ON_MATCH | portPRESCALE_64;
-	TCCR5B = ucLowByte;
+	/* Setup clock source and compare match behavior. */
+	TCCR0A = ( 1 << WGM01 );
+	TCCR0B = ( 1 << CS00 ) | ( 1 << CS01 );
 
 	/* Enable the interrupt - this is okay as interrupt are currently globally
-	disabled. */
-    //	ucLowByte = TIMSK;
-    ucLowByte = TIMSK5;
-	ucLowByte |= portCOMPARE_MATCH_A_INTERRUPT_ENABLE;
-	//TIMSK = ucLowByte;
-	TIMSK5 = ucLowByte;
+	//disabled. */
+	TIMSK0 = ( 1 << OCIE0A );
 }
 /*-----------------------------------------------------------*/
 
@@ -461,8 +451,8 @@ unsigned char ucHighByte, ucLowByte;
 	 */
 //	void SIG_OUTPUT_COMPARE1A( void ) __attribute__ ( ( signal, naked ) );
 //	void SIG_OUTPUT_COMPARE1A( void )
-	void TIMER5_COMPA_vect( void ) __attribute__ ( ( signal, naked ) );
-	void TIMER5_COMPA_vect( void )
+	void TIMER0_COMPA_vect( void ) __attribute__ ( ( signal, naked ) );
+	void TIMER0_COMPA_vect( void )
 	{
 		vPortYieldFromTick();
 		asm volatile ( "reti" );
@@ -476,8 +466,8 @@ unsigned char ucHighByte, ucLowByte;
 	 */
 //	void SIG_OUTPUT_COMPARE1A( void ) __attribute__ ( ( signal ) );
 //	void SIG_OUTPUT_COMPARE1A( void )
-	void TIMER5_COMPA_vect( void ) __attribute__ ( ( signal ) );
-	void TIMER5_COMPA_vect( void )	
+	void TIMER0_COMPA_vect( void ) __attribute__ ( ( signal ) );
+	void TIMER0_COMPA_vect( void )	
 	{
 		vTaskIncrementTick();
 	}

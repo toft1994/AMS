@@ -11,10 +11,10 @@
 
 #include <stdint.h>
 
-class Timer3
+class Timer5
 {
 	public:
-	Timer3();
+	Timer5();
 	void setDutyCycleComA(float dutyCycle);
 	void setDutyCycleComB(float dutyCycle);
 	void setDutyCycleComC(float dutyCycle);

@@ -9,7 +9,7 @@
 
 /* Timers used for PWM */
 #include "Timer1.h"
-#include "Timer3.h"
+#include "Timer5.h"
 
 #ifndef ROBOTARM_H_
 #define ROBOTARM_H_
@@ -56,7 +56,7 @@ class Robotarm
 	inline void MotorSpeedController();
 	
 	Timer1 tmr1_;
-	Timer3 tmr3_;
+	Timer5 tmr3_;
 	Motor* motors_[6U];
 };
 

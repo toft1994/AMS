@@ -72,7 +72,7 @@ C_SRCS +=  \
 ../RobotArm/Motor/Source/M6.cpp \
 ../RobotArm/RobotArm.cpp \
 ../RobotArm/Timers/Source/Timer1.cpp \
-../RobotArm/Timers/Source/Timer3.cpp \
+../RobotArm/Timers/Source/Timer5.cpp \
 ../Source/croutine.c \
 ../Source/list.c \
 ../Source/portable/GCC/ATMega2560/port.c \
@@ -103,7 +103,7 @@ RobotArm/Motor/Source/M5.o \
 RobotArm/Motor/Source/M6.o \
 RobotArm/RobotArm.o \
 RobotArm/Timers/Source/Timer1.o \
-RobotArm/Timers/Source/Timer3.o \
+RobotArm/Timers/Source/Timer5.o \
 Source/croutine.o \
 Source/list.o \
 Source/portable/GCC/ATMega2560/port.o \
@@ -127,7 +127,7 @@ RobotArm/Motor/Source/M5.o \
 RobotArm/Motor/Source/M6.o \
 RobotArm/RobotArm.o \
 RobotArm/Timers/Source/Timer1.o \
-RobotArm/Timers/Source/Timer3.o \
+RobotArm/Timers/Source/Timer5.o \
 Source/croutine.o \
 Source/list.o \
 Source/portable/GCC/ATMega2560/port.o \
@@ -151,7 +151,7 @@ RobotArm/Motor/Source/M5.d \
 RobotArm/Motor/Source/M6.d \
 RobotArm/RobotArm.d \
 RobotArm/Timers/Source/Timer1.d \
-RobotArm/Timers/Source/Timer3.d \
+RobotArm/Timers/Source/Timer5.d \
 Source/croutine.d \
 Source/list.d \
 Source/portable/GCC/ATMega2560/port.d \
@@ -175,7 +175,7 @@ RobotArm/Motor/Source/M5.d \
 RobotArm/Motor/Source/M6.d \
 RobotArm/RobotArm.d \
 RobotArm/Timers/Source/Timer1.d \
-RobotArm/Timers/Source/Timer3.d \
+RobotArm/Timers/Source/Timer5.d \
 Source/croutine.d \
 Source/list.d \
 Source/portable/GCC/ATMega2560/port.d \
@@ -290,7 +290,7 @@ RobotArm/Timers/Source/Timer1.o: ../RobotArm/Timers/Source/Timer1.cpp
 	@echo Finished building: $<
 	
 
-RobotArm/Timers/Source/Timer3.o: ../RobotArm/Timers/Source/Timer3.cpp
+RobotArm/Timers/Source/Timer5.o: ../RobotArm/Timers/Source/Timer5.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header" -I"../Keypad/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

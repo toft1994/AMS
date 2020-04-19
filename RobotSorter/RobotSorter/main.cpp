@@ -60,6 +60,42 @@ void FirstTask( void *pvParameters )
 	}
 	read = '0';
 	SendString("Moving on 3 \n\r");
+	
+	//csensor.addCalibrateColor( 2U );
+	//
+	//while( read != 'o' )
+	//{
+		//read = ReadChar();
+	//}
+	//read = '0';	
+	//SendString("Moving on 4 \n\r");
+	//
+	//csensor.addCalibrateColor( 3U );
+	//
+	//while( read != 'o' )
+	//{
+		//read = ReadChar();
+	//}
+	//read = '0';
+	//SendString("Moving on 5 \n\r");
+	//
+	//csensor.addCalibrateColor( 4U );
+	//
+	//while( read != 'o' )
+	//{
+		//read = ReadChar();
+	//}
+	//read = '0';
+	//SendString("Moving on 6 \n\r");
+	//
+	//csensor.addCalibrateColor( 5U );
+	//
+	while( read != 'o' )
+	{
+		read = ReadChar();
+	}
+	read = '0';
+	SendString("Moving on 7 \n\r");
 		 
 	while(1)
 	{		
@@ -71,6 +107,8 @@ void FirstTask( void *pvParameters )
 				vTaskDelay( 5000 / portTICK_RATE_MS );
 				arm->moveBlockToZoneOne();
 				vTaskDelay( 5000 / portTICK_RATE_MS );
+				//SendString("Hvid color\r\n");
+				//vTaskDelay( 5000 / portTICK_RATE_MS );
 				break;
 				
 			case 1U: 
@@ -78,20 +116,36 @@ void FirstTask( void *pvParameters )
 				vTaskDelay( 5000 / portTICK_RATE_MS );
 				arm->moveBlockToZoneTwo();
 				vTaskDelay( 5000 / portTICK_RATE_MS );
+				//SendString("Red color\r\n");
+				//vTaskDelay( 5000 / portTICK_RATE_MS );
 				break;
 				
 			//case 2U:
-				//arm.grabBlock();
-				//vTaskDelay( 5000 / portTICK_RATE_MS );
-				//arm.moveBlockToZoneThree();
+				////arm.grabBlock();
+				////vTaskDelay( 5000 / portTICK_RATE_MS );
+				////arm.moveBlockToZoneThree();
+				////vTaskDelay( 5000 / portTICK_RATE_MS );
+				//SendString("Blue color\r\n");
 				//vTaskDelay( 5000 / portTICK_RATE_MS );
 				//break;
 				//
-			case 255U:
-				break;
+			//case 3U:
+				//SendString("Green color\r\n");
+				//vTaskDelay( 5000 / portTICK_RATE_MS );
+				//break;
+				//
+			//case 4U:
+				//SendString("Yellow color\r\n");
+				//vTaskDelay( 5000 / portTICK_RATE_MS );
+				//break;
+				//
+			//case 5U:
+				//SendString("Orange color\r\n");
+				//vTaskDelay( 5000 / portTICK_RATE_MS );
+				//break;
 				
 		}
-		vTaskDelay(1000/portTICK_RATE_MS);
+		vTaskDelay(100/portTICK_RATE_MS);
 	}
 }
 
