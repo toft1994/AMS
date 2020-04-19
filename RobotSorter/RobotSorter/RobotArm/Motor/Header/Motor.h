@@ -30,19 +30,43 @@ class Motor
 //functions
 public:
 	virtual ~Motor() {};
+
+	/**
+	*    Turns motor a given amount until the desired position is achieved.
+	*	  Note that this function needs to run multiple times to work as intended.
+	*    @param void
+	*    @return void
+	*/
 	virtual void TurnMotor() = 0;
+	
+	/**
+	*    Converts degrees to percent and sets percent. When percent is set \ref TurnMotor 
+	*	 can be used to turn motor at a specific speed set by \ref delay. C
+	*	 Note that this function needs to run multiple times to work as intended.
+	*    @param uint8_t		sdegrees to turn
+	*    @return void
+	*/
 	virtual void SetDegrees( uint8_t degrees )
 	{
-		percent_ = percentPrDeg * degrees + startpercent_;
+		if ( maxDegrees_ >= degrees )
+		{
+			percent_ = percentPrDeg * degrees + startpercent_;
+		}
 	}
 	
 protected:
+	/* Needed timers for motors */
 	Timer1* tmr1Ptr_;
 	Timer3* tmr3Ptr_;
+	
+	/* Attributes needed to calculate degree to duty cycle */
 	float percentPrDeg;
 	float percent_;
 	float oldPercent_;
 	float startpercent_;
+	uint8_t maxDegrees_;
+	
+	/* Speed delay */
 	uint16_t delay_;
 
 }; //Motor

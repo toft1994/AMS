@@ -146,6 +146,7 @@
       <Value>../ColorSensor/header</Value>
       <Value>../RobotArm/Motor/Header</Value>
       <Value>../RobotArm/Timers/Header</Value>
+      <Value>../Keypad/Header</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcccpp.compiler.optimization.level>
@@ -186,10 +187,19 @@
     <Compile Include="ColorSensor\source\timer4.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="CPlusPlusSpecific.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="FreeRTOSConfig.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="IO.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Keypad\Header\KeyPad.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Keypad\Source\KeyPad.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
@@ -252,10 +262,40 @@
     <Compile Include="RobotArm\Timers\Source\Timer3.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="RTOS_HH.c">
+    <Compile Include="Source\croutine.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Source\croutine.c">
+    <Compile Include="Source\include\croutine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\FreeRTOS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\list.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\mpu_wrappers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\portable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\projdefs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\semphr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\StackMacros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Source\include\timers.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Source\list.c">
@@ -279,11 +319,20 @@
     <Compile Include="Source\timers.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="uart.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uart.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ColorSensor" />
     <Folder Include="ColorSensor\header" />
     <Folder Include="ColorSensor\source" />
+    <Folder Include="Keypad" />
+    <Folder Include="Keypad\Header" />
+    <Folder Include="Keypad\Source" />
     <Folder Include="RobotArm\Motor" />
     <Folder Include="RobotArm\Motor\Header" />
     <Folder Include="RobotArm\Motor\Source" />

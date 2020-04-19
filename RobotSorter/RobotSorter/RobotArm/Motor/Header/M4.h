@@ -13,23 +13,18 @@
 
 class M4 : public Motor
 {
-	//functions
 	public:
 	M4( Timer3 * tmr );
 	~M4();
-	virtual void TurnMotor();
-	
-	/* These functions are needed for some reason - Otherwise inheratence wont work */
-	void * operator new( size_t n )
-	{
-		void * const p = malloc( n );
-		return p;
-	}
 
-	void operator delete( void * p ) // or delete(void *, std::size_t)
-	{
-		free( p );
-	}
+	/**
+	*    Turns motor a given amount until the desired position is achieved.
+	*	  Note that this function needs to run multiple times to work as intended.
+	*    @param void
+	*    @return void
+	*/
+	void TurnMotor();
+	
 	protected:
 	private:
 

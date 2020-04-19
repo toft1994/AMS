@@ -11,107 +11,137 @@
 #include "ColorSensor.h"
 #include "RobotArm/RobotArm.h"
 
+#include "uart.h"
+
 /* RTOS include */
 #include "FreeRTOS.h"
 #include "task.h"
 #include "portmacro.h"
 
-extern "C" void __cxa_pure_virtual() { while (1); }
-	
-ColorSensor csensor = ColorSensor( hundredPercent );
+/* This file is needed to be able to use new and delete operators */
+#include "CPlusPlusSpecific.h"
+
+#include "uart.h"
+
+#include "timer4.h"
+
+//ColorSensor csensor = ColorSensor( hundredPercent );
 
 void FirstTask( void *pvParameters )
 {
-	Robotarm* armptr = (Robotarm*) pvParameters;	 
+	InitUART( 9600, 8, 'N' );
 
-	csensor.setBackgroundBasis();
+	SendString("I JUST FUCKIN RESTARTED!!\n\r\n\r");
+	Robotarm* arm = ( Robotarm* ) pvParameters;
+	ColorSensor csensor = ColorSensor( twentyPercent );
+	char read = '0';
+	
+	while( read != 'o' )
+	{
+		read = ReadChar();
+	}
+	read = '0';	
+	SendString("Moving on 1 \n\r");
+	
 	csensor.addCalibrateColor( 0U );
+	
+	while( read != 'o' )
+	{
+		read = ReadChar();
+	}
+	read = '0';
+	SendString("Moving on 2 \n\r");
+		
 	csensor.addCalibrateColor( 1U );
-	//csensor.addCalibrateColor( 2U );
+	
+	while( read != 'o' )
+	{
+		read = ReadChar();
+	}
+	read = '0';
+	SendString("Moving on 3 \n\r");
 		 
 	while(1)
 	{		
-		uint8_t color = 1U;//csensor.getColor();
+		uint8_t color = csensor.getColor();
 		switch ( color )
 		{
-			case 1U:
-				armptr->grabBlock();
+			case 0U:
+				arm->grabBlock();
 				vTaskDelay( 5000 / portTICK_RATE_MS );
-				armptr->moveBlockToZoneOne();
-				vTaskDelay( 5000 / portTICK_RATE_MS );
-				break;
-				
-			case 2U: 
-				armptr->grabBlock();
-				vTaskDelay( 5000 / portTICK_RATE_MS );
-				armptr->moveBlockToZoneTwo();
+				arm->moveBlockToZoneOne();
 				vTaskDelay( 5000 / portTICK_RATE_MS );
 				break;
 				
-			case 3U:
-				armptr->grabBlock();
+			case 1U: 
+				arm->grabBlock();
 				vTaskDelay( 5000 / portTICK_RATE_MS );
-				armptr->moveBlockToZoneThree();
+				arm->moveBlockToZoneTwo();
 				vTaskDelay( 5000 / portTICK_RATE_MS );
 				break;
 				
+			//case 2U:
+				//arm.grabBlock();
+				//vTaskDelay( 5000 / portTICK_RATE_MS );
+				//arm.moveBlockToZoneThree();
+				//vTaskDelay( 5000 / portTICK_RATE_MS );
+				//break;
+				//
 			case 255U:
 				break;
 				
 		}
+		vTaskDelay(1000/portTICK_RATE_MS);
 	}
 }
 
 int main(void)
 {
 	Robotarm arm = Robotarm();
-
-	xTaskCreate(FirstTask,  ( signed char * ) "Task", configMINIMAL_STACK_SIZE, &arm, tskIDLE_PRIORITY, NULL);
+	xTaskCreate(FirstTask,  ( signed char * ) "Task", configMAIN_STACK_SIZE, &arm, tskIDLE_PRIORITY, NULL);
 	vTaskStartScheduler();
 
 	while (1)
 	{
 	}
-	//InitUART( UART0, 9600, 8, 'N' );
-	//ColorSensor cs = ColorSensor( hundredPercent );
-	//cs.setBackgroundBasis();
-	//cs.setBackgroundBasis();
+	//char read = '0';
+	//InitUART( 9600, 8, 'N' );
+	//ColorSensor cs = ColorSensor( twentyPercent );
+	//while( read != 'o' )
+	//{
+		//read = ReadChar();
+	//}
+	//read = '0';
+	//SendString("Moving on \n\r");
 	//cs.addCalibrateColor( 0U );
+		//while( read != 'o' )
+		//{
+			//read = ReadChar();
+		//}
+		//read = '0';
+		//SendString("Moving on \n\r");
 	//cs.addCalibrateColor( 1U );
-	//cs.addCalibrateColor( 2U );
-	//cs.addCalibrateColor( 3U );
 //
     ///* Replace with your application code */
     //while (1) 
     //{
+		//SendString("ReadingColor\n\r");
 		//uint8_t readColor = cs.getColor();
 		//
 		//if (readColor == 0U)
 		//{
-			//SendString(UART0, "Color is green!");
-			//SendChar(UART0, '\r');
-			//SendChar(UART0, '\n');
+			//SendString("Color is green!");
+			//SendChar( '\r');
+			//SendChar('\n');
 		//}
 		//else if (readColor == 1U)
 		//{
-			//SendString(UART0, "Color is blue!");
-			//SendChar(UART0, '\r');
-			//SendChar(UART0, '\n');
+			//SendString("Color is blue!");
+			//SendChar('\r');
+			//SendChar('\n');
 		//}
-		//else if (readColor == 2U)
-		//{
-			//SendString(UART0, "Color is red!");
-			//SendChar(UART0, '\r');
-			//SendChar(UART0, '\n');
-		//}
-		//else if (readColor == 3U)
-		//{
-			//SendString(UART0, "Color is orange!");
-			//SendChar(UART0, '\r');
-			//SendChar(UART0, '\n');
-		//}
-//
-		//_delay_ms(100);
+		//
+		//_delay_ms(1000);
     //}
 }
 

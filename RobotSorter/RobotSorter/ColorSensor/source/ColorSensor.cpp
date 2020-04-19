@@ -9,6 +9,13 @@
 #include "timer4.h"
 #include <avr/io.h>
 
+#include "uart.h"
+
+/* RTOS include */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "portmacro.h"
+
 // default constructor
 ColorSensor::ColorSensor( FrequencyScaling scaling )
 {
@@ -27,35 +34,52 @@ ColorSensor::~ColorSensor()
 
 uint8_t ColorSensor::getColor()
 {
-	//color result = error;
-	
-	uint32_t redpwm = 0U;
-	uint32_t bluepwm = 0U;
-	uint32_t greenpwm = 0U;
-
 	setFilter( redFilter );
-	redpwm = frequency_.getPwm() - _backgroundBasis.getRedPwm();
+	uint16_t redPeriod = frequency_.getPeriod();
 
 	setFilter( blueFilter );
-	bluepwm = frequency_.getPwm() - _backgroundBasis.getBluePwm();  
+	uint16_t bluePeriod = frequency_.getPeriod();  
 
 	setFilter( greenFilter );
-	greenpwm = frequency_.getPwm() - _backgroundBasis.getGreenPwm();
+	uint16_t greenPeriod = frequency_.getPeriod();
+	
+	setFilter( noFilter );
+	uint16_t whitePeriod = frequency_.getPeriod();
+	
+	//SendString("RedPeriod: ");
+	//SendInteger((int)redPeriod);
+	//SendString("\n\r\n\r");
+	//
+	//SendString("BluePeriod: ");
+	//SendInteger((int)bluePeriod);
+	//SendString("\n\r\n\r");
+	//
+	//SendString("GreenPeriod: ");
+	//SendInteger((int)greenPeriod);
+	//SendString("\n\r\n\r");
+	//
+	//SendString("NoFilter: ");
+	//SendInteger((int)whitePeriod);
+	//SendString("\n\r\n\r");
 	
 	for ( uint8_t index = 0U; index < 10; index++)
 	{
-		uint32_t storedRed = _colors[index].getRedPwm();
-		uint32_t storedBlue = _colors[index].getBluePwm();
-		uint32_t storedGreen = _colors[index].getGreenPwm();		
+		uint16_t storedRed = _colors[index].getRedPeriod();
+		uint16_t storedBlue = _colors[index].getBluePeriod();
+		uint16_t storedGreen = _colors[index].getGreenPeriod();		
+		uint16_t storedWhite = _colors[index].getWhitePeriod();
 		
-		if ( storedRed + 5000 > redpwm && storedRed - 5000 < redpwm )
+		if ( storedRed + 20 > redPeriod && storedRed - 20 < redPeriod )
 		{
-			if ( storedBlue + 5000 > bluepwm && storedBlue - 5000 < bluepwm )
+			if ( storedBlue + 20 > bluePeriod && storedBlue - 20 < bluePeriod )
 			{
-				if ( storedGreen + 5000 > greenpwm && storedGreen - 5000 < greenpwm )
+				if ( storedGreen + 20 > greenPeriod && storedGreen - 20 < greenPeriod )
 				{
-					return index;
-					break;
+					if ( storedWhite + 100 > whitePeriod && storedWhite - 100 < whitePeriod )
+					{
+						return index;
+						break;
+					}
 				}
 			}
 		}
@@ -64,34 +88,61 @@ uint8_t ColorSensor::getColor()
 	return 255;
 }
 
-void ColorSensor::setBackgroundBasis( void )
-{
-	setFilter(redFilter);
-	_backgroundBasis.setRedPwm( frequency_.getPwm() - 1000U );
-	
-	setFilter(blueFilter);
-	_backgroundBasis.setBluePwm( frequency_.getPwm() - 1000U );
-	
-	setFilter(greenFilter);
-	_backgroundBasis.setGreenPwm( frequency_.getPwm() - 1000U );
-}
-
 void ColorSensor::addCalibrateColor( uint8_t colorIndex )
 {
 	if ( colorIndex < 10U )
 	{
+		uint16_t period = 0;
+		
 		// Set all colors
 		setFilter( redFilter );
-		_colors[colorIndex].setRedPwm( frequency_.getPwm() - _backgroundBasis.getRedPwm() );
+		while( period == 0 )
+		{
+			period = frequency_.getPeriod();
+		}
+		_colors[colorIndex].setRedPeriod( period );
+		period = 0;
 
 		setFilter( blueFilter );
-		_colors[colorIndex].setBluePwm( frequency_.getPwm() - _backgroundBasis.getBluePwm() );
+		while( period == 0 )
+		{
+			period = frequency_.getPeriod();
+		}
+		_colors[colorIndex].setBluePeriod( period );
+		period = 0;
 		
 		setFilter( greenFilter );
-		_colors[colorIndex].setGreenPwm( frequency_.getPwm() - _backgroundBasis.getGreenPwm() );
+		while( period == 0 )
+		{
+			period = frequency_.getPeriod();
+		}
+		_colors[colorIndex].setGreenPeriod( period );
+		
+		setFilter( noFilter );
+		while( period == 0 )
+		{
+			period = frequency_.getPeriod();
+		}
+		_colors[colorIndex].setWhitePeriod( period );
 		
 		// Set index
 		_colors[colorIndex].setColorIndex(colorIndex);
+		
+		//SendString("RedPeriod: ");
+		//SendInteger((int)_colors[colorIndex].getRedPeriod());
+		//SendString("\n\r\n\r");
+		//
+		//SendString("BluePeriod: ");
+		//SendInteger((int)_colors[colorIndex].getBluePeriod());
+		//SendString("\n\r\n\r");
+		//
+		//SendString("GreenPeriod: ");
+		//SendInteger((int)_colors[colorIndex].getGreenPeriod());
+		//SendString("\n\r\n\r");
+		//
+		//SendString("NoFilter: ");
+		//SendInteger((int)_colors[colorIndex].getWhitePeriod());
+		//SendString("\n\r\n\r");
 	}
 	else
 	{

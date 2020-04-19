@@ -11,14 +11,6 @@
 #include "Timer1.h"
 #include "Timer3.h"
 
-/* Robotarm motors */
-#include "M1.h"
-#include "M2.h"
-#include "M3.h"
-#include "M4.h"
-#include "M5.h"
-#include "M6.h"
-
 #ifndef ROBOTARM_H_
 #define ROBOTARM_H_
 
@@ -26,25 +18,45 @@ class Robotarm
 {
 	public:
 	Robotarm();
-	void grabBlock();
-	void moveBlockToZoneOne();
-	void moveBlockToZoneTwo();
-	void moveBlockToZoneThree();
-	static void startMotorImpl( void *pvParameters );
 	
+	/**
+	*    Picks up item from standard position.
+	*    @param void
+	*    @return void
+	*/
+	void grabBlock();
+	
+	/**
+	*    Moves item to zone one. 
+	*	 Note: This function should be called after \ref grabBlock.
+	*    @param void
+	*    @return void
+	*/
+	void moveBlockToZoneOne();
+	
+	/**
+	*    Moves item to zone two. 
+	*	 Note: This function should be called after \ref grabBlock.
+	*    @param void
+	*    @return void
+	*/
+	void moveBlockToZoneTwo();
+	
+	/**
+	*    Moves item to zone three. 
+	*	 Note: This function should be called after \ref grabBlock.
+	*    @param void
+	*    @return void
+	*/
+	void moveBlockToZoneThree();
+
 	private:
+	static void startMotorImpl( void *pvParameters );
 	void ArmDownReleaseItem();
-	void MotorSpeedController();
+	inline void MotorSpeedController();
 	
 	Timer1 tmr1_;
 	Timer3 tmr3_;
-	
-	M1 motor1_;
-	M2 motor2_;
-	M3 motor3_;
-	M4 motor4_;
-	M5 motor5_;
-	M6 motor6_;
 	Motor* motors_[6U];
 };
 

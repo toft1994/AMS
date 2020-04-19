@@ -21,6 +21,9 @@ M2::M2( Timer1* tmr )
 	/* This value is the delay on motor. A lower value makes motors go faster and higher value makes motors go slower. Value is in MS */
 	delay_ = 10;
 
+	/* This value is the maximum number of degrees the motor can turn */
+	maxDegrees_ = 150;
+
 	/* Set motor to default startup value */
 	SetDegrees( 90 );
 	tmr1Ptr_->setDutyCycleComB( percent_ );
@@ -29,7 +32,7 @@ M2::M2( Timer1* tmr )
 
 M2::~M2()
 {
-} 
+}
 
 void M2::TurnMotor()
 {

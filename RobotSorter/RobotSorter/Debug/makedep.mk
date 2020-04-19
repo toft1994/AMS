@@ -8,6 +8,8 @@ ColorSensor\source\ColorSensor.cpp
 
 ColorSensor\source\timer4.cpp
 
+Keypad\Source\KeyPad.cpp
+
 main.cpp
 
 RobotArm\Motor\Source\M1.cpp
@@ -28,8 +30,6 @@ RobotArm\Timers\Source\Timer1.cpp
 
 RobotArm\Timers\Source\Timer3.cpp
 
-RTOS_HH.c
-
 Source\croutine.c
 
 Source\list.c
@@ -43,4 +43,6 @@ Source\queue.c
 Source\tasks.c
 
 Source\timers.c
+
+uart.cpp
 

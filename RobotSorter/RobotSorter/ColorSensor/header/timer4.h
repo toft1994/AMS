@@ -14,7 +14,13 @@ class timer4
 {
 	public:
 	timer4();
-	float getPwm( void );
+	
+	/**
+	*    Reads the period of the PWM signal from sensor and returns it.
+	*    @param void 
+	*    @return uint16_t	period of PWM signal
+	*/
+	uint16_t getPeriod( void );
 	
 	private:
 };

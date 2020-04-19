@@ -17,24 +17,16 @@ class M1 : public Motor
 	public:
 	M1(Timer1 * tmr);
 	~M1();
-	void TurnMotor();
-	M1( const M1 &c );
-	M1& operator=( const M1 &c );
 	
-	/* These functions are needed for some reason - Otherwise inheratence wont work */
-	void * operator new(size_t n)
-	{
-		void * const p = malloc(n);
-		return p;
-	}
-
-	void operator delete(void * p)
-	{
-		if ( p != NULL )
-		{
-			free(p);
-		}
-	}
+	/**
+	*    Turns motor a given amount until the desired position is achieved.
+	*	 Note that this function should be run from a task along with all the other motors
+	*	 and it needs to run multiple times to work as intended.
+	*    @param void
+	*    @return void
+	*/
+	void TurnMotor();
+	
 	protected:
 	private:
 

@@ -7,6 +7,7 @@
 
 #include "M3.h"
 
+
 M3::M3( Timer1* tmr )
 {
 	/* Store timer pointer */
@@ -19,10 +20,13 @@ M3::M3( Timer1* tmr )
 	startpercent_ = 2.5;
 
 	/* This value is the delay on motor. A lower value makes motors go faster and higher value makes motors go slower. Value is in MS */
-	delay_ = 7;
+	delay_ = 10;
+	
+	/* This value is the maximum number of degrees the motor can turn */
+	maxDegrees_ = 180;
 	
 	/* Set motor to default startup value */
-	SetDegrees(90);
+	SetDegrees( 90 );
 	tmr1Ptr_->setDutyCycleComC( percent_ );
 	oldPercent_ = percent_;	
 }

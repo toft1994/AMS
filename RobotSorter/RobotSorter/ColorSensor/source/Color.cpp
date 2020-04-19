@@ -19,19 +19,24 @@ Color::~Color()
 {
 }
 
-uint32_t Color::getRedPwm( void )
+uint16_t Color::getRedPeriod( void )
 {
-	return _redPwm;
+	return _redPeriod;
 }
 
-uint32_t Color::getBluePwm( void )
+uint16_t Color::getBluePeriod( void )
 {
-	return _bluePwm;
+	return _bluePeriod;
 }
 
-uint32_t Color::getGreenPwm( void )
+uint16_t Color::getGreenPeriod( void )
 {
-	return _greenPwm;
+	return _greenPeriod;
+}
+
+uint16_t Color::getWhitePeriod( void )
+{
+	return _whitePeriod;
 }
 
 uint8_t Color::getColorIndex( void )
@@ -39,19 +44,24 @@ uint8_t Color::getColorIndex( void )
 	return _colorIndex;
 }
 
-void Color::setRedPwm( uint32_t redPwm )
+void Color::setRedPeriod( uint16_t redPeriod )
 {
-	_redPwm = redPwm;
+	_redPeriod = redPeriod;
 }
 
-void Color::setBluePwm( uint32_t bluePwm )
+void Color::setBluePeriod( uint16_t bluePeriod )
 {
-	_bluePwm = bluePwm;
+	_bluePeriod = bluePeriod;
 }
 
-void Color::setGreenPwm( uint32_t greenPwm )
+void Color::setGreenPeriod( uint16_t greenPeriod )
 {
-	_greenPwm = greenPwm;
+	_greenPeriod = greenPeriod;
+}
+
+void Color::setWhitePeriod( uint16_t whitePeriod )
+{
+	_whitePeriod = whitePeriod;
 }
 
 void Color::setColorIndex( uint8_t index )

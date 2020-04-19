@@ -5,13 +5,13 @@
  *  Author: jespe
  */ 
 
-#include "../header/timer4.h"
-#include "../../IO.h"
+#include "timer4.h"
+#include "IO.h"
 #include <avr/interrupt.h>
 
-volatile unsigned long oldValue = 0U;
-volatile unsigned long timeroverflow = 0U;
-volatile float freq = 0U;
+volatile uint32_t oldValue = 0U;
+volatile uint32_t timeroverflow = 0U;
+volatile uint16_t period = 0U;
 volatile bool first = true;
 
 // No scale
@@ -44,22 +44,43 @@ timer4::timer4()
     sei();
 }
 
-float timer4::getPwm( void )
+#include "uart.h"
+/* RTOS include */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "portmacro.h"
+uint16_t timer4::getPeriod( void )
 {
 	// Reset all needed values
 	first = true;
 	oldValue = 0U;
-	freq = 0U;
+	period = 0U;
+	timeroverflow = 0;
 	
 	// Enable interrupt and clear pending
 	TIFR4 = ( 0 << ICF4 ) | ( 0 << TOV4 );	
-	TIMSK4 = ( 1 << ICIE4 ) | ( 1 << TOIE4 );	
+	TIMSK4 = ( 1 << ICIE4 ) | ( 0 << TOIE4 );	
 	
 	// Wait until measurement has been taken
-	while ( freq == 0 )
-	{}
+	uint8_t timeout = 0U;
+	while ( period == 0U )
+	{
+		if ( timeout > 5U )
+		{
+			// Disable interrupt and clear pending
+			TIMSK4 = 0U;
+			TIFR4 = 0U;
+			break;
+		}
+		
+		// Delay for timeout
+		vTaskDelay( 1 / portTICK_RATE_MS );
+
+		// Increment timeout
+		timeout++;
+	}
 	
-	return freq;
+	return period;
 }
 
 ISR(TIMER4_OVF_vect)
@@ -67,8 +88,9 @@ ISR(TIMER4_OVF_vect)
 	timeroverflow++;
 }
 
-ISR(TIMER4_CAPT_vect, ISR_BLOCK)
+ISR(TIMER4_CAPT_vect)
 {
+	// Read value of timer
 	uint16_t readValue = ICR4;
 
 	if ( first == true )
@@ -76,14 +98,14 @@ ISR(TIMER4_CAPT_vect, ISR_BLOCK)
 		timeroverflow = 0U;
 		oldValue = readValue;
 		first = false;
-		TIFR4 = 1;
 		return;
 	}
-	
+		
 	// Disable interrupt and clear pending
 	TIMSK4 = 0U;	
 	TIFR4 = 0U;		
 			
+	// Calculate difference
 	uint32_t diff = 0U;
 
 	if ( readValue < oldValue )
@@ -102,10 +124,6 @@ ISR(TIMER4_CAPT_vect, ISR_BLOCK)
 	// Add timeroverflow to total diff
 	diff += timeroverflow << 16U;
 	
-	// Calculate frequency
-	freq = 1 / ( (float)diff * tick );
-	
-	// Reset timeroverflow and old value
-	timeroverflow = 0U;
-	oldValue = 0U;
+	// Calculate period
+	period = diff * tick * 1000000;
 }

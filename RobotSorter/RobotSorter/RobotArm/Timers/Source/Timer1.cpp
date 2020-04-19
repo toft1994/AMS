@@ -26,18 +26,18 @@ Timer1::Timer1()
 
 void Timer1::setDutyCycleComA( float dutyCycle )
 {
-	volatile float percent = ICR1/100;
+	float percent = ICR1/100;
 	OCR1A = (uint8_t)percent*dutyCycle;
 }
 
 void Timer1::setDutyCycleComB( float dutyCycle )
 {
-	volatile float percent = ICR1/100;
+	float percent = ICR1/100;
 	OCR1B = (uint8_t)percent*dutyCycle;
 }
 
 void Timer1::setDutyCycleComC( float dutyCycle )
 {
-	volatile float percent = ICR1/100;
+	float percent = ICR1/100;
 	OCR1C = (uint8_t)percent*dutyCycle;
 }
