@@ -148,6 +148,8 @@
       <Value>../RobotArm/Timers/Header</Value>
       <Value>../Keypad/Header</Value>
       <Value>../RobotArm/Arm/Header</Value>
+      <Value>../TouchDisplay/Touch/Header</Value>
+      <Value>../TouchDisplay/Display/Header</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcccpp.compiler.optimization.level>
@@ -351,8 +353,12 @@
     <Folder Include="Source\portable\GCC" />
     <Folder Include="TouchDisplay" />
     <Folder Include="RobotArm" />
-    <Folder Include="TouchDisplay\Header" />
-    <Folder Include="TouchDisplay\Source" />
+    <Folder Include="TouchDisplay\Display\Header\" />
+    <Folder Include="TouchDisplay\Display\Source\" />
+    <Folder Include="TouchDisplay\Display" />
+    <Folder Include="TouchDisplay\Touch" />
+    <Folder Include="TouchDisplay\Touch\Header\" />
+    <Folder Include="TouchDisplay\Touch\Source\" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
