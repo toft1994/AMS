@@ -10,15 +10,15 @@
 #ifndef TIMER4_H_
 #define TIMER4_H_
 
-class timer4
+class Timer4
 {
 	public:
-	timer4();
+	Timer4();
 	
 	/**
 	*    Reads the period of the PWM signal from sensor and returns it.
-	*    @param void 
-	*    @return uint16_t	period of PWM signal
+	*    @param void Nothing
+	*    @return uint16_t period of PWM signal
 	*/
 	uint16_t getPeriod( void );
 	

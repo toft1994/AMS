@@ -21,32 +21,32 @@ class Robotarm
 	
 	/**
 	*    Picks up item from standard position.
-	*    @param void
-	*    @return void
+	*    @param void Nothing
+	*    @return void Nothing
 	*/
 	void grabBlock();
 	
 	/**
 	*    Moves item to zone one. 
 	*	 Note: This function should be called after \ref grabBlock.
-	*    @param void
-	*    @return void
+	*    @param void Nothing
+	*    @return void Nothing
 	*/
 	void moveBlockToZoneOne();
 	
 	/**
 	*    Moves item to zone two. 
 	*	 Note: This function should be called after \ref grabBlock.
-	*    @param void
-	*    @return void
+	*    @param void Nothing
+	*    @return void Nothing
 	*/
 	void moveBlockToZoneTwo();
 	
 	/**
 	*    Moves item to zone three. 
 	*	 Note: This function should be called after \ref grabBlock.
-	*    @param void
-	*    @return void
+	*    @param void Nothing
+	*    @return void Nothing
 	*/
 	void moveBlockToZoneThree();
 
@@ -55,8 +55,19 @@ class Robotarm
 	void ArmDownReleaseItem();
 	inline void MotorSpeedController();
 	
+	/**
+	* Instance of Timer1 used to control PWM signals in \ref M1, \ref M2 and \ref M3.
+	*/
 	Timer1 tmr1_;
+	
+	/**
+	* Instance of Timer5 used to control PWM signals in \ref M4, \ref M5 and \ref M6.
+	*/
 	Timer5 tmr3_;
+	
+	/** 
+	* Array of motors used to easily loop though \ref TurnMotor. 
+	*/
 	Motor* motors_[6U];
 };
 

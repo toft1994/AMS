@@ -5,7 +5,7 @@
  *  Author: jespe
  */ 
 
-#include "timer4.h"
+#include "Timer4.h"
 #include "IO.h"
 #include <avr/interrupt.h>
 
@@ -14,9 +14,24 @@
 #include "task.h"
 #include "portmacro.h"
 
+/** 
+* The previews value read from sensor. 
+*/
 volatile uint16_t oldValue = 0U;
+
+/**
+* Overflow counter to be able to handle duty cycles below 200 Hz.
+*/
 volatile uint32_t timeroverflow = 0U;
+
+/**
+* The resulting duty cycle from the sample. 
+*/ 
 volatile uint16_t period = 0U;
+
+/** 
+* Indicator if its the first rising edge or not. 
+*/ 
 volatile bool first = true;
 
 // No scale
@@ -34,7 +49,7 @@ volatile float tick = 0.0000000625;
 // 1024 scale
 //volatile float tick = 0.000064;
 
-timer4::timer4()
+Timer4::Timer4()
 {
 	// Setup timer to normal mode and pre scaler to 1
 	TCCR4A = 0U;
@@ -49,7 +64,7 @@ timer4::timer4()
     sei();
 }
 
-uint16_t timer4::getPeriod( void )
+uint16_t Timer4::getPeriod( void )
 {
 	// Reset all needed values
 	first = true;

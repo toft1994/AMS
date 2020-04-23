@@ -6,11 +6,13 @@ ColorSensor\source\Color.cpp
 
 ColorSensor\source\ColorSensor.cpp
 
-ColorSensor\source\timer4.cpp
+ColorSensor\source\Timer4.cpp
 
 Keypad\Source\KeyPad.cpp
 
 main.cpp
+
+RobotArm\Arm\Source\RobotArm.cpp
 
 RobotArm\Motor\Source\M1.cpp
 
@@ -23,8 +25,6 @@ RobotArm\Motor\Source\M4.cpp
 RobotArm\Motor\Source\M5.cpp
 
 RobotArm\Motor\Source\M6.cpp
-
-RobotArm\RobotArm.cpp
 
 RobotArm\Timers\Source\Timer1.cpp
 

@@ -4,12 +4,11 @@
  * Created: 27-02-2020 09:09:45
  * Author : jespe
  */ 
-#define F_CPU 16000000
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include "ColorSensor.h"
-#include "RobotArm/RobotArm.h"
+#include "RobotArm.h"
 
 #include "uart.h"
 
@@ -20,12 +19,6 @@
 
 /* This file is needed to be able to use new and delete operators */
 #include "CPlusPlusSpecific.h"
-
-#include "uart.h"
-
-#include "timer4.h"
-
-//ColorSensor csensor = ColorSensor( hundredPercent );
 
 void FirstTask( void *pvParameters )
 {
@@ -107,7 +100,7 @@ void FirstTask( void *pvParameters )
 				vTaskDelay( 5000 / portTICK_RATE_MS );
 				arm->moveBlockToZoneOne();
 				vTaskDelay( 5000 / portTICK_RATE_MS );
-				//SendString("Hvid color\r\n");
+				//SendString("White color\r\n");
 				//vTaskDelay( 5000 / portTICK_RATE_MS );
 				break;
 				

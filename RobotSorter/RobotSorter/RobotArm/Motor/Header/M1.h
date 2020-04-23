@@ -22,8 +22,8 @@ class M1 : public Motor
 	*    Turns motor a given amount until the desired position is achieved.
 	*	 Note that this function should be run from a task along with all the other motors
 	*	 and it needs to run multiple times to work as intended.
-	*    @param void
-	*    @return void
+	*    @param void Nothing
+	*    @return void Nothing
 	*/
 	void TurnMotor();
 	

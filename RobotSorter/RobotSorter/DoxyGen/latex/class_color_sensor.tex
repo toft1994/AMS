@@ -1,0 +1,80 @@
+\hypertarget{class_color_sensor}{}\doxysection{Color\+Sensor Class Reference}
+\label{class_color_sensor}\index{ColorSensor@{ColorSensor}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_color_sensor_adbc2a09c8d0339c47c115adfd12b89e5}\label{class_color_sensor_adbc2a09c8d0339c47c115adfd12b89e5}} 
+{\bfseries Color\+Sensor} (Frequency\+Scaling scaling)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_color_sensor_a7e18519451f816192e777c085df260fc}{get\+Color}} (void)
+\item 
+void \mbox{\hyperlink{class_color_sensor_a74b9975ef3aa5a3b1f6a49eb83d52ae4}{add\+Calibrate\+Color}} (uint8\+\_\+t color\+Index)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_color_sensor_aa956d1459394046eb757e9f0f65e629e}\label{class_color_sensor_aa956d1459394046eb757e9f0f65e629e}} 
+void {\bfseries set\+Filter} (Filter filter)
+\item 
+\mbox{\Hypertarget{class_color_sensor_a4642877bcd957399703f7ccb480f7dd4}\label{class_color_sensor_a4642877bcd957399703f7ccb480f7dd4}} 
+void {\bfseries set\+Frequencyscaling} (Frequency\+Scaling scaling)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_timer4}{Timer4}} \mbox{\hyperlink{class_color_sensor_ad5fe2a0666a5c9d5496de486af28cf32}{frequency\+\_\+}}
+\item 
+\mbox{\hyperlink{class_color}{Color}} \mbox{\hyperlink{class_color_sensor_afe39b3808beb13d4d6fac3450fb291a5}{\+\_\+colors}} \mbox{[}10\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_color_sensor_a74b9975ef3aa5a3b1f6a49eb83d52ae4}\label{class_color_sensor_a74b9975ef3aa5a3b1f6a49eb83d52ae4}} 
+\index{ColorSensor@{ColorSensor}!addCalibrateColor@{addCalibrateColor}}
+\index{addCalibrateColor@{addCalibrateColor}!ColorSensor@{ColorSensor}}
+\doxysubsubsection{\texorpdfstring{addCalibrateColor()}{addCalibrateColor()}}
+{\footnotesize\ttfamily void Color\+Sensor\+::add\+Calibrate\+Color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{color\+Index }\end{DoxyParamCaption})}
+
+Adds color of object placed in front of color sensor to list of known colors. If the object is placed in front of color sensor again and \mbox{\hyperlink{class_color_sensor_a7e18519451f816192e777c085df260fc}{get\+Color}} is called the color index will be returned. 
+\begin{DoxyParams}{Parameters}
+{\em uint8\+\_\+t} & Specific index for color \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_color_sensor_a7e18519451f816192e777c085df260fc}\label{class_color_sensor_a7e18519451f816192e777c085df260fc}} 
+\index{ColorSensor@{ColorSensor}!getColor@{getColor}}
+\index{getColor@{getColor}!ColorSensor@{ColorSensor}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily uint8\+\_\+t Color\+Sensor\+::get\+Color (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Reads color of object placed in front of color sensor and returns the specific color index. 
+\begin{DoxyParams}{Parameters}
+{\em void} & Nothing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t index of color. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_color_sensor_afe39b3808beb13d4d6fac3450fb291a5}\label{class_color_sensor_afe39b3808beb13d4d6fac3450fb291a5}} 
+\index{ColorSensor@{ColorSensor}!\_colors@{\_colors}}
+\index{\_colors@{\_colors}!ColorSensor@{ColorSensor}}
+\doxysubsubsection{\texorpdfstring{\_colors}{\_colors}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_color}{Color}} Color\+Sensor\+::\+\_\+colors\mbox{[}10\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+Array of \mbox{\hyperlink{class_color}{Color}} instances to store colors read from sensor. These values will be used to check if the read color is the same as the stored color \mbox{\Hypertarget{class_color_sensor_ad5fe2a0666a5c9d5496de486af28cf32}\label{class_color_sensor_ad5fe2a0666a5c9d5496de486af28cf32}} 
+\index{ColorSensor@{ColorSensor}!frequency\_@{frequency\_}}
+\index{frequency\_@{frequency\_}!ColorSensor@{ColorSensor}}
+\doxysubsubsection{\texorpdfstring{frequency\_}{frequency\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_timer4}{Timer4}} Color\+Sensor\+::frequency\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+Instance of \mbox{\hyperlink{class_timer4}{Timer4}} used to capture the period of the duty cycle from the color sensor. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Robot\+Sorter/\+Robot\+Sorter/\+Color\+Sensor/header/Color\+Sensor.\+h\item 
+Robot\+Sorter/\+Robot\+Sorter/\+Color\+Sensor/source/Color\+Sensor.\+cpp\end{DoxyCompactItemize}

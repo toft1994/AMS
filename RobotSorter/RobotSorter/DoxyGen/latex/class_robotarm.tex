@@ -1,0 +1,123 @@
+\hypertarget{class_robotarm}{}\doxysection{Robotarm Class Reference}
+\label{class_robotarm}\index{Robotarm@{Robotarm}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_robotarm_a49bfa11647b8320ed919bce51866f556}{grab\+Block}} ()
+\item 
+void \mbox{\hyperlink{class_robotarm_a443b66b5a32dc6f511af36730de1e300}{move\+Block\+To\+Zone\+One}} ()
+\item 
+void \mbox{\hyperlink{class_robotarm_a4c4dce7eacbb166816ec0e957117e9f4}{move\+Block\+To\+Zone\+Two}} ()
+\item 
+void \mbox{\hyperlink{class_robotarm_ae6367b5a2fbb562ba01e516d963423ff}{move\+Block\+To\+Zone\+Three}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robotarm_a8d7ce9f2acd2082c770ad7d37fa04372}\label{class_robotarm_a8d7ce9f2acd2082c770ad7d37fa04372}} 
+void {\bfseries Arm\+Down\+Release\+Item} ()
+\item 
+\mbox{\Hypertarget{class_robotarm_af816ed8fb1db70332b9e2f5678e48c13}\label{class_robotarm_af816ed8fb1db70332b9e2f5678e48c13}} 
+void {\bfseries Motor\+Speed\+Controller} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robotarm_a2419d619749e8ea8090643d7f0722cd7}\label{class_robotarm_a2419d619749e8ea8090643d7f0722cd7}} 
+static void {\bfseries start\+Motor\+Impl} (void $\ast$pv\+Parameters)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_timer1}{Timer1}} \mbox{\hyperlink{class_robotarm_a2b723df6d17b343f4882b5f1146a9fa4}{tmr1\+\_\+}}
+\item 
+\mbox{\hyperlink{class_timer5}{Timer5}} \mbox{\hyperlink{class_robotarm_a65fb8b951404990044366d9f7b99a941}{tmr3\+\_\+}}
+\item 
+\mbox{\hyperlink{class_motor}{Motor}} $\ast$ \mbox{\hyperlink{class_robotarm_ae1bf40e3e0ffa36440b5a3964b2e0331}{motors\+\_\+}} \mbox{[}6U\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robotarm_a49bfa11647b8320ed919bce51866f556}\label{class_robotarm_a49bfa11647b8320ed919bce51866f556}} 
+\index{Robotarm@{Robotarm}!grabBlock@{grabBlock}}
+\index{grabBlock@{grabBlock}!Robotarm@{Robotarm}}
+\doxysubsubsection{\texorpdfstring{grabBlock()}{grabBlock()}}
+{\footnotesize\ttfamily void Robotarm\+::grab\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Picks up item from standard position. 
+\begin{DoxyParams}{Parameters}
+{\em void} & Nothing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robotarm_a443b66b5a32dc6f511af36730de1e300}\label{class_robotarm_a443b66b5a32dc6f511af36730de1e300}} 
+\index{Robotarm@{Robotarm}!moveBlockToZoneOne@{moveBlockToZoneOne}}
+\index{moveBlockToZoneOne@{moveBlockToZoneOne}!Robotarm@{Robotarm}}
+\doxysubsubsection{\texorpdfstring{moveBlockToZoneOne()}{moveBlockToZoneOne()}}
+{\footnotesize\ttfamily void Robotarm\+::move\+Block\+To\+Zone\+One (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Moves item to zone one. Note\+: This function should be called after \mbox{\hyperlink{class_robotarm_a49bfa11647b8320ed919bce51866f556}{grab\+Block}}. 
+\begin{DoxyParams}{Parameters}
+{\em void} & Nothing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robotarm_ae6367b5a2fbb562ba01e516d963423ff}\label{class_robotarm_ae6367b5a2fbb562ba01e516d963423ff}} 
+\index{Robotarm@{Robotarm}!moveBlockToZoneThree@{moveBlockToZoneThree}}
+\index{moveBlockToZoneThree@{moveBlockToZoneThree}!Robotarm@{Robotarm}}
+\doxysubsubsection{\texorpdfstring{moveBlockToZoneThree()}{moveBlockToZoneThree()}}
+{\footnotesize\ttfamily void Robotarm\+::move\+Block\+To\+Zone\+Three (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Moves item to zone three. Note\+: This function should be called after \mbox{\hyperlink{class_robotarm_a49bfa11647b8320ed919bce51866f556}{grab\+Block}}. 
+\begin{DoxyParams}{Parameters}
+{\em void} & Nothing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robotarm_a4c4dce7eacbb166816ec0e957117e9f4}\label{class_robotarm_a4c4dce7eacbb166816ec0e957117e9f4}} 
+\index{Robotarm@{Robotarm}!moveBlockToZoneTwo@{moveBlockToZoneTwo}}
+\index{moveBlockToZoneTwo@{moveBlockToZoneTwo}!Robotarm@{Robotarm}}
+\doxysubsubsection{\texorpdfstring{moveBlockToZoneTwo()}{moveBlockToZoneTwo()}}
+{\footnotesize\ttfamily void Robotarm\+::move\+Block\+To\+Zone\+Two (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Moves item to zone two. Note\+: This function should be called after \mbox{\hyperlink{class_robotarm_a49bfa11647b8320ed919bce51866f556}{grab\+Block}}. 
+\begin{DoxyParams}{Parameters}
+{\em void} & Nothing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void Nothing 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_robotarm_ae1bf40e3e0ffa36440b5a3964b2e0331}\label{class_robotarm_ae1bf40e3e0ffa36440b5a3964b2e0331}} 
+\index{Robotarm@{Robotarm}!motors\_@{motors\_}}
+\index{motors\_@{motors\_}!Robotarm@{Robotarm}}
+\doxysubsubsection{\texorpdfstring{motors\_}{motors\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_motor}{Motor}}$\ast$ Robotarm\+::motors\+\_\+\mbox{[}6U\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+Array of motors used to easily loop though Turn\+Motor. \mbox{\Hypertarget{class_robotarm_a2b723df6d17b343f4882b5f1146a9fa4}\label{class_robotarm_a2b723df6d17b343f4882b5f1146a9fa4}} 
+\index{Robotarm@{Robotarm}!tmr1\_@{tmr1\_}}
+\index{tmr1\_@{tmr1\_}!Robotarm@{Robotarm}}
+\doxysubsubsection{\texorpdfstring{tmr1\_}{tmr1\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_timer1}{Timer1}} Robotarm\+::tmr1\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+Instance of \mbox{\hyperlink{class_timer1}{Timer1}} used to control P\+WM signals in \mbox{\hyperlink{class_m1}{M1}}, \mbox{\hyperlink{class_m2}{M2}} and \mbox{\hyperlink{class_m3}{M3}}. \mbox{\Hypertarget{class_robotarm_a65fb8b951404990044366d9f7b99a941}\label{class_robotarm_a65fb8b951404990044366d9f7b99a941}} 
+\index{Robotarm@{Robotarm}!tmr3\_@{tmr3\_}}
+\index{tmr3\_@{tmr3\_}!Robotarm@{Robotarm}}
+\doxysubsubsection{\texorpdfstring{tmr3\_}{tmr3\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_timer5}{Timer5}} Robotarm\+::tmr3\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+Instance of \mbox{\hyperlink{class_timer5}{Timer5}} used to control P\+WM signals in \mbox{\hyperlink{class_m4}{M4}}, \mbox{\hyperlink{class_m5}{M5}} and \mbox{\hyperlink{class_m6}{M6}}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Robot\+Sorter/\+Robot\+Sorter/\+Robot\+Arm/\+Arm/\+Header/Robot\+Arm.\+h\item 
+Robot\+Sorter/\+Robot\+Sorter/\+Robot\+Arm/\+Arm/\+Source/Robot\+Arm.\+cpp\end{DoxyCompactItemize}

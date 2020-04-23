@@ -39,8 +39,8 @@ class ColorSensor
 	/**
 	*    Reads color of object placed in front of color sensor and returns
 	*	 the specific color index.
-	*    @param void
-	*    @return uint8_t	index of color. 
+	*    @param void Nothing
+	*    @return uint8_t index of color. 
 	*/
 	uint8_t getColor( void );
 	
@@ -48,8 +48,8 @@ class ColorSensor
 	*    Adds color of object placed in front of color sensor to list of 
 	*	 known colors. If the object is placed in front of color sensor again
 	*	 and \ref getColor is called the color index will be returned. 
-	*    @param uint8_t		Specific index for color
-	*    @return void
+	*    @param uint8_t	Specific index for color
+	*    @return void Nothing
 	*/	
 	void addCalibrateColor( uint8_t colorIndex );
 	
@@ -57,7 +57,17 @@ class ColorSensor
 	void setFilter( Filter filter );
 	void setFrequencyscaling( FrequencyScaling scaling );
 	
-	timer4 frequency_;
+	/**
+	* Instance of \ref Timer4 used to capture the period of the
+	* duty cycle from the color sensor. 
+	*/
+	Timer4 frequency_;
+	
+	/**
+	* Array of \ref Color instances to store colors read from sensor. 
+	* These values will be used to check if the read color is the 
+	* same as the stored color
+	*/
 	Color _colors[10];
 };
 

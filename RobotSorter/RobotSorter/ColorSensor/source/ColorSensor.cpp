@@ -21,7 +21,7 @@ ColorSensor::ColorSensor( FrequencyScaling scaling )
 	// Set ports to the right values.
 	DDRC = 0xFF;
 	DDRD = 0x00;
-	frequency_ = timer4();
+	frequency_ = Timer4();
 
 	// Set default filter and scaling
 	setFilter( noFilter );

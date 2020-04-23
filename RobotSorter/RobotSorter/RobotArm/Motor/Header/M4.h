@@ -20,8 +20,8 @@ class M4 : public Motor
 	/**
 	*    Turns motor a given amount until the desired position is achieved.
 	*	  Note that this function needs to run multiple times to work as intended.
-	*    @param void
-	*    @return void
+	*    @param void Nothing
+	*    @return void Nothing
 	*/
 	void TurnMotor();
 	

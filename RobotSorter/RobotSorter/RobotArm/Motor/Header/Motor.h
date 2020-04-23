@@ -34,8 +34,8 @@ public:
 	/**
 	*    Turns motor a given amount until the desired position is achieved.
 	*	  Note that this function needs to run multiple times to work as intended.
-	*    @param void
-	*    @return void
+	*    @param void Nothing
+	*    @return void Nothing
 	*/
 	virtual void TurnMotor() = 0;
 	
@@ -43,8 +43,8 @@ public:
 	*    Converts degrees to percent and sets percent. When percent is set \ref TurnMotor 
 	*	 can be used to turn motor at a specific speed set by \ref delay. C
 	*	 Note that this function needs to run multiple times to work as intended.
-	*    @param uint8_t		sdegrees to turn
-	*    @return void
+	*    @param uint8_t	degrees to turn
+	*    @return void Nothing
 	*/
 	virtual void SetDegrees( uint8_t degrees )
 	{
@@ -55,18 +55,44 @@ public:
 	}
 	
 protected:
-	/* Needed timers for motors */
+	/**
+	* Pointer to an instance of Timer1. Used to control PWM signals.
+	*/
 	Timer1* tmr1Ptr_;
+	
+	/**
+	* Pointer to an instance of Timer5. Used to control PWM signals.
+	*/
 	Timer5* tmr3Ptr_;
 	
-	/* Attributes needed to calculate degree to duty cycle */
+	/**
+	* Number of percent that is needed to turn motor one degree.
+	*/
 	float percentPrDeg;
+	
+	/**
+	* The current duty cycle percent the motor is set to.
+	*/
 	float percent_;
+	
+	/**
+	* The duty cycle percent the motor is set to one tick ago. 
+	*/
 	float oldPercent_;
+	
+	/**
+	* Lowest duty cycle percent at which the motor will turn.
+	*/
 	float startpercent_;
+	
+	/**
+	* Max turn radius for the motor in degrees.
+	*/
 	uint8_t maxDegrees_;
 	
-	/* Speed delay */
+	/** 
+	* Time in ms that the motor will be delayed.
+	*/
 	uint16_t delay_;
 
 }; //Motor
