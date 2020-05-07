@@ -35,13 +35,13 @@ volatile uint16_t period = 0U;
 volatile bool first = true;
 
 // No scale
-volatile float tick = 0.0000000625;
+//volatile float tick = 0.0000000625;
 
 // 8 scale
 //volatile float tick = 0.0000005;
 
 // 64 scale
-//volatile float tick = 0.000004;
+volatile float tick = 0.000004;
 
 // 256 scale
 //volatile float tick = 0.000016;
@@ -51,9 +51,9 @@ volatile float tick = 0.0000000625;
 
 Timer4::Timer4()
 {
-	// Setup timer to normal mode and pre scaler to 1
+	// Setup timer to normal mode and pre scaler to 64
 	TCCR4A = 0U;
-	TCCR4B = ( 1 << ICNC4 ) | ( 1 << ICES4 ) | ( 1 << CS40 );
+	TCCR4B = ( 1 << ICNC4 ) | ( 1 << ICES4 ) | ( 1 << CS40 ) | ( 1 << CS41 );
 	TCCR4C = 0U;
 	
 	// Clear flags and set counter to zero
