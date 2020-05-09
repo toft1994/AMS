@@ -6,13 +6,16 @@
  */ 
 
 #include "Timer1.h"
+#include "IO.h"
 #include <avr/io.h>
 
 Timer1::Timer1()
 {
-	// Set B5 to output
-	DDRB = DDRB | ( 1 << 5 ) | ( 1 << 6 ) | ( 1 << 7 );
-	
+	// Set all needed ports to outputs
+	ROBOTARM_M1_OUT_PORT |= ( 1 << ROBOTARM_M1_OUT_PIN );
+	ROBOTARM_M2_OUT_PORT |= ( 1 << ROBOTARM_M2_OUT_PIN );
+	ROBOTARM_M3_OUT_PORT |= ( 1 << ROBOTARM_M3_OUT_PIN );
+		
 	// Set timer to run in PWM, Phase Correct mode with 50 Hz freq. 
 	TCCR1A = ( 1 << COM1A1 ) | ( 1 << COM1B1 ) | ( 1 << COM1C1 ) | ( 0 << WGM10 ) | ( 0 << WGM11 );
 	TCCR1B = ( 1 << WGM13 ) | ( 0 << CS10 )  | ( 1 << CS12 );

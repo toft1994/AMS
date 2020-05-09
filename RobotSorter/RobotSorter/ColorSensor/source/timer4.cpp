@@ -51,6 +51,12 @@ volatile float tick = 0.000004;
 
 Timer4::Timer4()
 {
+	// Set ports to the right values.
+	COLORSENSOR_S0_PORT |= ( 1 << COLORSENSOR_S0_PIN );
+	COLORSENSOR_S1_PORT |= ( 1 << COLORSENSOR_S1_PIN );
+	COLORSENSOR_S2_PORT |= ( 1 << COLORSENSOR_S2_PIN );
+	COLORSENSOR_S3_PORT |= ( 1 << COLORSENSOR_S3_PIN );
+	
 	// Setup timer to normal mode and pre scaler to 64
 	TCCR4A = 0U;
 	TCCR4B = ( 1 << ICNC4 ) | ( 1 << ICES4 ) | ( 1 << CS40 ) | ( 1 << CS41 );

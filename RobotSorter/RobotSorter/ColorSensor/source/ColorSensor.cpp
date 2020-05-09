@@ -13,14 +13,11 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "portmacro.h"
+#include "uart.h"
 
 // default constructor
 ColorSensor::ColorSensor( FrequencyScaling scaling )
 {
-	// DE HER SKAL ÆNDRES!!!
-	// Set ports to the right values.
-	DDRC = 0xFF;
-	DDRD = 0x00;
 	frequency_ = Timer4();
 
 	// Set default filter and scaling
@@ -35,6 +32,8 @@ ColorSensor::~ColorSensor()
 
 uint8_t ColorSensor::getColor()
 {
+	uint8_t result = 255;
+	
 	// Get period values from all filters
 	setFilter( redFilter );
 	uint16_t redPeriod = frequency_.getPeriod();
@@ -45,27 +44,30 @@ uint8_t ColorSensor::getColor()
 	setFilter( greenFilter );
 	uint16_t greenPeriod = frequency_.getPeriod();
 	
+	setFilter( noFilter );
+	uint16_t whitePeriod = frequency_.getPeriod();
+	
 	// Check all stored colors against read values	
 	for ( uint8_t index = 0U; index < 10; index++)
-	{
-		//uint16_t storedRed = _colors[index].getRedPeriod();
-		//uint16_t storedBlue = _colors[index].getBluePeriod();
-		//uint16_t storedGreen = _colors[index].getGreenPeriod();		
-		
-		if ( _colors[index].getRedPeriod() + 10 > redPeriod && _colors[index].getRedPeriod() - 10 < redPeriod )
+	{		
+		if ( _colors[index].getRedPeriod() + 5 > redPeriod && _colors[index].getRedPeriod() - 5 < redPeriod )
 		{
-			if ( _colors[index].getBluePeriod() + 10 > bluePeriod && _colors[index].getBluePeriod() - 10 < bluePeriod )
+			if ( _colors[index].getBluePeriod() + 5 > bluePeriod && _colors[index].getBluePeriod() - 5 < bluePeriod )
 			{
-				if ( _colors[index].getGreenPeriod() + 10 > greenPeriod && _colors[index].getGreenPeriod() - 10 < greenPeriod )
+				if ( _colors[index].getGreenPeriod() + 5 > greenPeriod && _colors[index].getGreenPeriod() - 5 < greenPeriod )
 				{
-					return index;
+					if ( _colors[index].getWhitePeriod() + 2 > whitePeriod && _colors[index].getWhitePeriod() - 2 < whitePeriod )
+					{
+						result = index;
+						break;
+					}
 				}
 			}
 		}
 	}
 	
-	// Return default value
-	return 255;
+	// Return value
+	return result;
 }
 
 void ColorSensor::addCalibrateColor( uint8_t colorIndex )
@@ -81,6 +83,13 @@ void ColorSensor::addCalibrateColor( uint8_t colorIndex )
 		
 		setFilter( greenFilter );
 		_colors[colorIndex].setGreenPeriod( frequency_.getPeriod() );
+		
+		setFilter( noFilter );
+		_colors[colorIndex].setWhitePeriod( frequency_.getPeriod() );
+		
+		SendString("White = ");
+		SendInteger(_colors[colorIndex].getWhitePeriod());
+		SendString("\r\n");
 				
 		// Set index
 		_colors[colorIndex].setColorIndex( colorIndex );

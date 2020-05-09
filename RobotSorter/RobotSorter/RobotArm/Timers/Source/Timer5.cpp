@@ -6,12 +6,15 @@
  */ 
 
 #include "Timer5.h"
+#include "IO.h"
 #include <avr/io.h>
 
 Timer5::Timer5()
 {
-	// Set B5 to output
-	DDRL = DDRL | ( 1 << 3 ) | ( 1 << 4 ) | ( 1 << 5 );
+	// Set all needed ports to outputs
+	ROBOTARM_M4_OUT_PORT |= ( 1 << ROBOTARM_M4_OUT_PIN );
+	ROBOTARM_M5_OUT_PORT |= ( 1 << ROBOTARM_M5_OUT_PIN );
+	ROBOTARM_M6_OUT_PORT |= ( 1 << ROBOTARM_M6_OUT_PIN );
 	
 	// Set timer to run in PWM, Phase Correct mode with 50 Hz freq.
 	TCCR5A = ( 1 << COM3A1 ) | ( 1 << COM3B1 ) | ( 1 << COM3C1 ) | ( 0 << WGM30 ) | ( 0 << WGM31 );

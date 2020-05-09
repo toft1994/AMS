@@ -35,6 +35,7 @@ LINKER_SCRIPT_DEP:=
 SUBDIRS :=  \
 ../ColorSensor \
 ../ColorSensor/header \
+../ColorSensor/test \
 ../ColorSensor/source \
 ../Keypad \
 ../Keypad/Header \
@@ -45,6 +46,7 @@ SUBDIRS :=  \
 ../RobotArm/Motor/Header \
 ../RobotArm/Motor/Source \
 ../RobotArm/Arm \
+../RobotArm/Test \
 ../RobotArm/Timers \
 ../RobotArm/Timers/Header \
 ../RobotArm/Timers/Source \
