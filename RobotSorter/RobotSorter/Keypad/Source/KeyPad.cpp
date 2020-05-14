@@ -7,15 +7,16 @@
 #define F_CPU 16000000
 
 #include <stdlib.h>
-#include <util/delay.h>
 #include <avr/io.h>
 #include "KeyPad.h"
-#include "uart.h"
 
+/* RTOS include */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "portmacro.h"
 
 KeyPad::KeyPad()
 {
-	InitUART(9600, 8, 'N');
 }
 
 char KeyPad::readKeyboard(){
@@ -24,7 +25,7 @@ char KeyPad::readKeyboard(){
 	DDRA = 0b11110000; // Configure for Columns to be output and row to be input
 	PORTA = 0b11110000; // Set Columns output to be high!
 	
-	_delay_ms(4);	// Delays for allowing Pins to switch state from input to output and reverse
+	vTaskDelay( 4 / portTICK_RATE_MS );		// Delays for allowing Pins to switch state from input to output and reverse
 	
 	while( (PINA & 0b00001111) == 0 )	// Wait for key pressed
 	{	
@@ -35,7 +36,7 @@ char KeyPad::readKeyboard(){
 	DDRA = 0b00001111; // Switch Columns to be input and row to be output
 	PORTA = 0b00001111; // Set Row outputs to be high!
 	
-	_delay_ms(4);
+	vTaskDelay( 4 / portTICK_RATE_MS );
 	
 	//PORTA = 0;
 	//DDRA = 0;

@@ -6,9 +6,10 @@
  */ 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 #include "ColorSensor.h"
 #include "RobotArm.h"
+#include "Touchscreen.h"
+#include "KeyPad.h"
 
 #include "uart.h"
 
@@ -20,67 +21,96 @@
 /* This file is needed to be able to use new and delete operators */
 #include "CPlusPlusSpecific.h"
 
-void FirstTask( void *pvParameters )
-{
-	InitUART( 9600, 8, 'N' );
+/* Create all needed objects */
+Robotarm arm = Robotarm();
+ColorSensor csensor = ColorSensor( twentyPercent );
+Touchscreen screen = Touchscreen();
 
-	SendString("I JUST FUCKIN RESTARTED!!\n\r\n\r");
-	Robotarm* arm = ( Robotarm* ) pvParameters;
-	ColorSensor csensor = ColorSensor( twentyPercent );
-	char read = '0';
-	
-	while( read != 'o' )
+uint8_t colorIndex = 0;
+
+void Sort( uint8_t color )
+{
+	switch ( color )
 	{
-		read = ReadChar();
-	}
-	read = '0';	
-	SendString("Moving on 1 \n\r");
-	
-	csensor.addCalibrateColor( 0U );
-	
-	while( read != 'o' )
-	{
-		read = ReadChar();
-	}
-	read = '0';
-	SendString("Moving on 2 \n\r");
+		case 0U:
+		arm.grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS ); // This might not be needed!!! it can be added in Robotarm!!!! we will seeee later
+		arm.moveBlockToZoneOne();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
 		
-	csensor.addCalibrateColor( 1U );
-	
-	while( read != 'o' )
-	{
-		read = ReadChar();
+		case 1U:
+		arm.grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		arm.moveBlockToZoneTwo();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 2U:
+		arm.grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		arm.moveBlockToZoneThree();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 3U:
+		arm.grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		arm.moveBlockToZoneFour();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 4U:
+		arm.grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		arm.moveBlockToZoneFive();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 5U:
+		arm.grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		arm.moveBlockToZoneSix();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		default:
+		break;
 	}
-	read = '0';
-	SendString("Starting to read\n\r");
-			 
+}
+
+void MainTask( void *pvParameters )
+{
 	while(1)
-	{		
-		uint8_t color = csensor.getColor();
-		switch ( color )
+	{
+		screen.clearScreen();
+		
+		while (1); // while(keypad.checkPasswordEntered() == 0);
+					
+		screen.presentButtonsOnDisplay();
+		
+		// We need somehting to break from this state again! Input from keypad
+	
+		switch ( screen.checkButtons() )
 		{
-			case 0U:
-				arm->grabBlock();
-				vTaskDelay( 5000 / portTICK_RATE_MS );
-				arm->moveBlockToZoneOne();
-				vTaskDelay( 5000 / portTICK_RATE_MS );
+			case 1U:
+			{
+				csensor.addCalibrateColor(colorIndex);
+				colorIndex++;			
 				break;
-				
-			case 1U: 
-				arm->grabBlock();
-				vTaskDelay( 5000 / portTICK_RATE_MS );
-				arm->moveBlockToZoneTwo();
-				vTaskDelay( 5000 / portTICK_RATE_MS );
-				break;
+			}
+		
+			case 2U:
+			{
+				Sort( csensor.getColor() );
+			}
 		}
-		vTaskDelay(100/portTICK_RATE_MS);
 	}
 }
 
 int main(void)
 {
-	Robotarm arm = Robotarm();
-	xTaskCreate(FirstTask,  ( signed char * ) "Task", configMAIN_STACK_SIZE, &arm, tskIDLE_PRIORITY, NULL);
+	xTaskCreate(MainTask,  ( signed char * ) "Task", configMAIN_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
 	vTaskStartScheduler();
 
 	while (1)

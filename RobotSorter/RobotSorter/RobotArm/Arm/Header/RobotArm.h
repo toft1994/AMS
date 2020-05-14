@@ -49,6 +49,30 @@ class Robotarm
 	*    @return void Nothing
 	*/
 	void moveBlockToZoneThree();
+	
+	/**
+	*    Moves item to zone four. 
+	*	 Note: This function should be called after \ref grabBlock.
+	*    @param void Nothing
+	*    @return void Nothing
+	*/
+	void moveBlockToZoneFour();
+	
+	/**
+	*    Moves item to zone five. 
+	*	 Note: This function should be called after \ref grabBlock.
+	*    @param void Nothing
+	*    @return void Nothing
+	*/
+	void moveBlockToZoneFive();
+	
+	/**
+	*    Moves item to zone six. 
+	*	 Note: This function should be called after \ref grabBlock.
+	*    @param void Nothing
+	*    @return void Nothing
+	*/
+	void moveBlockToZoneSix();
 
 	private:
 	static void startMotorImpl( void *pvParameters );

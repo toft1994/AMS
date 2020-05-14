@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RobotSorter: RobotSorter/RobotSorter/ColorSensor/header/Timer4.h Source File</title>
+<title>RobotSorter: RobotSorter/RobotSorter/RobotArm/Test/RobotArmTestMain.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,40 +61,39 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_431a32101316125b3ed1d8047b407b33.html">RobotSorter</a></li><li class="navelem"><a class="el" href="dir_4afd3772bacc42d97529bc937ecdab95.html">RobotSorter</a></li><li class="navelem"><a class="el" href="dir_2acdd66815b0843a91f69dce8396bb69.html">ColorSensor</a></li><li class="navelem"><a class="el" href="dir_cca94d6ba09b063f850b641ccd627229.html">header</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_431a32101316125b3ed1d8047b407b33.html">RobotSorter</a></li><li class="navelem"><a class="el" href="dir_4afd3772bacc42d97529bc937ecdab95.html">RobotSorter</a></li><li class="navelem"><a class="el" href="dir_335ffe26d6c1d56c3679f603eda967c0.html">RobotArm</a></li><li class="navelem"><a class="el" href="dir_8b945140eb15f28c9e174aa94f074e58.html">Test</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Timer4.h</div>  </div>
+<div class="title">RobotArmTestMain.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * timer1.h</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * RobotArmTestMain.h</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Created: 27-02-2020 10:45:41</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Created: 09-05-2020 13:47:13</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  Author: jespe</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span> </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;RobotArm.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef TIMER4_H_</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define TIMER4_H_</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_timer4.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_timer4.html">Timer4</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_timer4.html">Timer4</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    uint16_t <a class="code" href="class_timer4.html#ab0890cb317a04269de25f6516db28773">getPeriod</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TIMER4_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> RobotarmTestMain( <span class="keywordtype">void</span>* armPtr )</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="class_robotarm.html">Robotarm</a>* arm = ( <a class="code" href="class_robotarm.html">Robotarm</a>* ) armPtr;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">while</span> (1)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        arm-&gt;<a class="code" href="class_robotarm.html#a49bfa11647b8320ed919bce51866f556">grabBlock</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        vTaskDelay( 500 / portTICK_RATE_MS );</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        arm-&gt;<a class="code" href="class_robotarm.html#a443b66b5a32dc6f511af36730de1e300">moveBlockToZoneOne</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        vTaskDelay( 500 / portTICK_RATE_MS );</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_timer4_html"><div class="ttname"><a href="class_timer4.html">Timer4</a></div><div class="ttdef"><b>Definition:</b> Timer4.h:13</div></div>
-<div class="ttc" id="aclass_timer4_html_ab0890cb317a04269de25f6516db28773"><div class="ttname"><a href="class_timer4.html#ab0890cb317a04269de25f6516db28773">Timer4::getPeriod</a></div><div class="ttdeci">uint16_t getPeriod(void)</div><div class="ttdef"><b>Definition:</b> Timer4.cpp:73</div></div>
+<div class="ttc" id="aclass_robotarm_html"><div class="ttname"><a href="class_robotarm.html">Robotarm</a></div><div class="ttdef"><b>Definition:</b> RobotArm.h:17</div></div>
+<div class="ttc" id="aclass_robotarm_html_a443b66b5a32dc6f511af36730de1e300"><div class="ttname"><a href="class_robotarm.html#a443b66b5a32dc6f511af36730de1e300">Robotarm::moveBlockToZoneOne</a></div><div class="ttdeci">void moveBlockToZoneOne()</div><div class="ttdef"><b>Definition:</b> RobotArm.cpp:54</div></div>
+<div class="ttc" id="aclass_robotarm_html_a49bfa11647b8320ed919bce51866f556"><div class="ttname"><a href="class_robotarm.html#a49bfa11647b8320ed919bce51866f556">Robotarm::grabBlock</a></div><div class="ttdeci">void grabBlock()</div><div class="ttdef"><b>Definition:</b> RobotArm.cpp:38</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -13,7 +13,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "portmacro.h"
-#include "uart.h"
 
 // default constructor
 ColorSensor::ColorSensor( FrequencyScaling scaling )
@@ -86,10 +85,6 @@ void ColorSensor::addCalibrateColor( uint8_t colorIndex )
 		
 		setFilter( noFilter );
 		_colors[colorIndex].setWhitePeriod( frequency_.getPeriod() );
-		
-		SendString("White = ");
-		SendInteger(_colors[colorIndex].getWhitePeriod());
-		SendString("\r\n");
 				
 		// Set index
 		_colors[colorIndex].setColorIndex( colorIndex );

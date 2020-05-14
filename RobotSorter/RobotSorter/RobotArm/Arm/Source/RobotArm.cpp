@@ -53,21 +53,40 @@ void Robotarm::grabBlock()
 
 void Robotarm::moveBlockToZoneOne()
 {
-	motors_[0]->SetDegrees(90);
+	motors_[0]->SetDegrees(40);
 	ArmDownReleaseItem();
 }
 
 void Robotarm::moveBlockToZoneTwo()
 {
-	motors_[0]->SetDegrees(135);
+	motors_[0]->SetDegrees(68);
 	ArmDownReleaseItem();
 }
 
 void Robotarm::moveBlockToZoneThree()
 {
+	motors_[0]->SetDegrees(96);
+	ArmDownReleaseItem();
+}
+
+void Robotarm::moveBlockToZoneFour()
+{
+	motors_[0]->SetDegrees(124);
+	ArmDownReleaseItem();
+}
+
+void Robotarm::moveBlockToZoneFive()
+{
+	motors_[0]->SetDegrees(152);
+	ArmDownReleaseItem();
+}
+
+void Robotarm::moveBlockToZoneSix()
+{
 	motors_[0]->SetDegrees(180);
 	ArmDownReleaseItem();
 }
+
 
 void Robotarm::ArmDownReleaseItem()
 {

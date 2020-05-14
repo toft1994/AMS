@@ -44,5 +44,11 @@ Source\tasks.c
 
 Source\timers.c
 
+TouchDisplay\DisplayDriver\Source\TFTdriver.cpp
+
+TouchDisplay\TouchScreen\Source\Touchscreen.cpp
+
+TouchDisplay\TouchDriver\Source\TouchDriver.cpp
+
 uart.cpp
 
