@@ -20,17 +20,27 @@
 #define BIT6 6
 #define BIT7 7
 
+/* Bit positions shifted */
+#define BIT1_SHIFTED (1U << 0U)
+#define BIT2_SHIFTED (1U << 1U)
+#define BIT3_SHIFTED (1U << 2U)
+#define BIT4_SHIFTED (1U << 3U)
+#define BIT5_SHIFTED (1U << 4U)
+#define BIT6_SHIFTED (1U << 5U)
+#define BIT7_SHIFTED (1U << 6U)
+#define BIT8_SHIFTED (1U << 7U)
+
 /* Colorsensor */
-#define COLORSENSOR_S0_PIN BIT7
-#define COLORSENSOR_S1_PIN BIT6
-#define COLORSENSOR_S2_PIN BIT5
-#define COLORSENSOR_S3_PIN BIT4
+#define COLORSENSOR_S0_PIN BIT1
+#define COLORSENSOR_S1_PIN BIT0
+#define COLORSENSOR_S2_PIN BIT1
+#define COLORSENSOR_S3_PIN BIT0
 #define COLORSENSOR_OUT_PIN BIT0
 
-#define COLORSENSOR_S0_PORT PORTK
-#define COLORSENSOR_S1_PORT PORTK
-#define COLORSENSOR_S2_PORT PORTK
-#define COLORSENSOR_S3_PORT PORTK
+#define COLORSENSOR_S0_PORT PORTJ
+#define COLORSENSOR_S1_PORT PORTJ
+#define COLORSENSOR_S2_PORT PORTH
+#define COLORSENSOR_S3_PORT PORTH
 #define COLORSENSOR_OUT_PORT PORTL
 
 /* RobotArm */
@@ -74,11 +84,11 @@
 #define DOUT_PORT PORTE
 #define IRQ_PORT PORTE
 
-#define CLK_PIN	BIT4
-#define CS_PIN BIT4
-#define DIN_PIN BIT6
-#define DOUT_PIN BIT6
-#define IRQ_PIN BIT5
+#define CLK_PIN	BIT4_SHIFTED
+#define CS_PIN BIT4_SHIFTED
+#define DIN_PIN BIT6_SHIFTED
+#define DOUT_PIN BIT6_SHIFTED
+#define IRQ_PIN BIT5_SHIFTED
 
 /* Screen Display part */
 // Data port definitions:

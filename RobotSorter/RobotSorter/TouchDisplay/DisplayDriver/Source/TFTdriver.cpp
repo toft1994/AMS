@@ -18,8 +18,11 @@
 
   Henning Hargaard, February 14, 2019
 ************************************************************/  
+#define F_CPU 16000000UL
+
 #include <avr/io.h> 
 #include <avr/cpufunc.h>
+#include <util/delay.h>
 
 #include "TFTdriver.h"
 #include "IO.h"
@@ -98,11 +101,12 @@ void DisplayInit()
 	
 	// Pull reset pin - Wait min 10 uS
 	RST_PORT &= ~(1 << RST_BIT);
-	vTaskDelay( 500 / portTICK_RATE_MS );
+	_delay_ms( 500 );
+
 	RST_PORT |= (1 << RST_BIT);
 	
 	// Wait for display to be rdy
-	vTaskDelay( 500 / portTICK_RATE_MS );
+	_delay_ms( 500 );
 	
 	// Set pixel interface and memoryaccesscontrol
 	InterfacePixelFormat(0b00000101);

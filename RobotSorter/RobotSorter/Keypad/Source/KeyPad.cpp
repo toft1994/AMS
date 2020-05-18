@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include <avr/io.h>
 #include "KeyPad.h"
+#include "uart.h"
 
 /* RTOS include */
 #include "FreeRTOS.h"
@@ -49,10 +50,7 @@ char KeyPad::readKeyboard(){
 	
 	vTaskDelay(8/portTICK_RATE_MS);	// Delays for allowing Pins to switch state from input to output and reverse
 	
-	
-	while( (PINK & 0b00001111) == 0 )	// Wait for key pressed
-	{	
-	}
+	while( (PINK & 0b00001111) == 0 );	// Wait for key pressed
 	
 	read_byte = (PINK & 0b00001111); // Get row of pressed key
 	
@@ -61,16 +59,14 @@ char KeyPad::readKeyboard(){
 	
 	vTaskDelay(8/portTICK_RATE_MS);
 	
-	//PORTA = 0;
-	//DDRA = 0;
 	char pressed_key = findKey(read_byte | (PINK & 0b11110000));
 	
 	// Wait for no key pressed anymore
 	
-	while((PINK & 0b11110000) != 0)
-	{
-	}
-	
+	while((PINK & 0b11110000) != 0);
+	SendString("pressed key:\r\n");
+	SendInteger(pressed_key);
+	SendString("\r\n");
 	return pressed_key;
 }
 

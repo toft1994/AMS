@@ -5,6 +5,7 @@
  *  Author: MIKKELJENSEN
  */ 
 #define F_CPU 16000000
+#include <util/delay.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
@@ -54,12 +55,12 @@ void TouchDriver::initTouchDriver()
 	dinXByte = 0b10011100;
 	dinYByte = 0b11011100;
 	
-	DDRH |= BIT4;
-	DDRE |= BIT4;
-	DDRG |= BIT6;
+	DDRH |= BIT4_SHIFTED;
+	DDRE |= BIT4_SHIFTED;
+	DDRG |= BIT6_SHIFTED;
 	
 	// Enable Interrupt
-	EICRB = 00000010;
+	EICRB = 0b00000010;
 	EIMSK |= 0b00010000;
 	
 	sei();
@@ -75,78 +76,91 @@ void TouchDriver::getCoordinates(uint8_t *x_ptr, uint8_t *y_ptr)
 {	
 	while(eIntHappend != 0);
 	
+	//taskENTER_CRITICAL();
 	*x_ptr = readTouch('X');
 	*y_ptr = readTouch('Y');
-	
-	vTaskDelay( 50 / portTICK_RATE_MS );
+	//taskEXIT_CRITICAL();
+	_delay_ms( 50 );
 	eIntHappend = 255;
 	
 }
 
 
-
 uint8_t TouchDriver::readTouch(char coord)
 {
-	uint8_t delayTime = 8;
-	uint8_t dinByte = 0;
-	
-	if (coord == 'X')
-	{
-		dinByte = dinXByte;
-		
-	}else if (coord == 'Y')
-	{
-		dinByte = dinYByte;
-	}
-	else{
-		return 255;
-	}
-	
-	// ChipSelect Set to 0	
-	CS_PORT &= ~CS_PIN;
-	vTaskDelay( delayTime / portTICK_RATE_MS );
-	uint8_t result = 0;
-	
-	// DIN byte and pulse DCLK for Read X
-	for (int i = 7; i >= 0; i--)
-	{
-		vTaskDelay( delayTime / portTICK_RATE_MS );
-		
-		DIN_PORT |= (((dinByte >> i)  & 0x01) << 5);
-				
-		CLK_PORT |= CLK_PIN;
-		vTaskDelay( delayTime / portTICK_RATE_MS );		
-		
-		CLK_PORT &= ~CLK_PIN;
-		DIN_PORT &= ~BIT6;
-	}
-			
-	// Systematically read DOUT
-	
-	for (int i = 7; i >= 0; i--)
-	{
-		vTaskDelay( delayTime / portTICK_RATE_MS );
-		
-		CLK_PORT |= CLK_PIN;
-		vTaskDelay( delayTime / portTICK_RATE_MS );
-		
-		CLK_PORT &= ~CLK_PIN;
-		//_delay_us(1); IS THIS NEEDED MIKKEL?
-		
-		bool temp = (PINE & (1U << 5));
-		
-		// Check this
-		result |= (temp << i);
-	}
-	
-	for (int i = 7; i >= 0; i--)
-	{
-		vTaskDelay( delayTime / portTICK_RATE_MS );		CLK_PORT |= CLK_PIN;
-		CLK_PORT &= ~CLK_PIN;
-		// Check this
-	}
-	
-	CS_PORT |= CS_PIN;
-		
-	return ~result;
+    
+    uint8_t delayTime = 8;
+    uint8_t dinByte = 0;
+    
+    if (coord == 'X')
+    {
+        dinByte = dinXByte;
+        
+    }else if (coord == 'Y')
+    {
+        dinByte = dinYByte;
+    }
+    else{
+        return 255;
+    }
+    
+    // ChipSelect Set to 0    
+    CS_PORT &= ~CS_PIN;
+    _delay_us(delayTime);
+    uint8_t result = 0;
+    
+    // DIN byte and pulse DCLK for Read X
+    for (int i = 7; i >= 0; i--)
+    {
+        _delay_us(delayTime);
+        
+        DIN_PORT |= (((dinByte >> i)  & 0x01) << 5);
+        
+        //_delay_us(5);
+        
+        CLK_PORT |= CLK_PIN;
+        //_NOP();
+        _delay_us(delayTime);
+        
+        
+        CLK_PORT &= ~CLK_PIN;
+        DIN_PORT &= ~BIT6_SHIFTED;
+    }
+    
+    //_delay_us(delayTime*2);
+        
+    // Systematically read DOUT
+    
+    for (int i = 7; i >= 0; i--)
+    {
+        _delay_us(delayTime);
+        
+        CLK_PORT |= CLK_PIN;
+        _delay_us(delayTime);
+        //_NOP();
+        CLK_PORT &= ~CLK_PIN;
+        _delay_us(1);
+        
+        bool temp = (PINE & (1U << 5));
+        
+        // Check this
+        result |= (temp << i);
+    }
+    
+    for (int i = 7; i >= 0; i--)
+    {
+        
+        _delay_us(delayTime);
+        CLK_PORT |= CLK_PIN;
+        _delay_us(delayTime);
+        //_NOP();
+        CLK_PORT &= ~CLK_PIN;
+        // Check this
+    }
+    
+    CS_PORT |= CS_PIN;
+    
+    //eIntHappend = 255;
+    
+    return ~result;
 } 

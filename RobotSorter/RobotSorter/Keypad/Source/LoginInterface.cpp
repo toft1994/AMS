@@ -17,7 +17,7 @@
 	 passWord[1] = 52; // 4
 	 passWord[2] = 55; // 7
 	 passWord[3] = 50; // 2
-	 
+	 stateOfMachine = 'L';
  }
  
  bool LoginInterface::checkLogin()

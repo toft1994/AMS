@@ -6,11 +6,13 @@
  */ 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+
 #include "ColorSensor.h"
 #include "RobotArm.h"
 #include "Touchscreen.h"
 #include "KeyPad.h"
 #include "LoginInterface.h"
+#include "uart.h"
 
 /* RTOS include */
 #include "FreeRTOS.h"
@@ -20,10 +22,7 @@
 /* This file is needed to be able to use new and delete operators */
 #include "CPlusPlusSpecific.h"
 
-/* Create all needed objects */
-Robotarm arm = Robotarm();
-ColorSensor csensor = ColorSensor( twentyPercent );
-Touchscreen screen = Touchscreen();
+/* Create shared objects */
 LoginInterface Login = LoginInterface();
 
 uint8_t colorIndex = 0;
@@ -38,11 +37,15 @@ void LoginKeyPad( void *pvParameters )
 
 void DisplayArm( void *pvParameters )
 {
+	Robotarm* armPtr = (Robotarm*) pvParameters;
+	ColorSensor csensor = ColorSensor( twentyPercent );
+	Touchscreen screen = Touchscreen();
+	
 	while(1)
 	{
 		screen.clearScreen();
-		
-		while ( Login.getstateOfMachine() == 'U' ) 
+			
+		while ( Login.getstateOfMachine() == 'U' )
 		{
 			screen.presentButtonsOnDisplay();
 			
@@ -50,6 +53,7 @@ void DisplayArm( void *pvParameters )
 			{
 				case 1U:
 				{
+					SendString("Adding color\r\n");
 					csensor.addCalibrateColor( colorIndex );
 					colorIndex++;			
 					break;
@@ -57,7 +61,8 @@ void DisplayArm( void *pvParameters )
 		
 				case 2U:
 				{
-					arm.MoveItem( csensor.getColor() );
+					SendString("Grabbing item\r\n");
+					armPtr->MoveItem( csensor.getColor() );
 				}
 			}
 		}
@@ -65,14 +70,14 @@ void DisplayArm( void *pvParameters )
 }
 
 int main(void)
-{
-	xTaskCreate(DisplayArm,  ( signed char * ) "Display + Arm Task", configMAIN_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
+{		
+	Robotarm arm = Robotarm();
+	InitUART(9600,8,'N');
 	xTaskCreate(LoginKeyPad,  ( signed char * ) "Keypad Task", configMAIN_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
+	xTaskCreate(DisplayArm,  ( signed char * ) "Display + Arm Task", configMAIN_STACK_SIZE, &arm, tskIDLE_PRIORITY, NULL);
 	vTaskStartScheduler();
 
 	while (1)
 	{
 	}
 }
-
-

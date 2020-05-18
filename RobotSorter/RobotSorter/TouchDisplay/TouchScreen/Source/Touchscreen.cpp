@@ -11,6 +11,7 @@
 #include "TouchDriver.h"
 #include "TFTdriver.h"
 #include "ButtonClass.h"
+#include "uart.h"
 
 
 Touchscreen::Touchscreen()
@@ -30,7 +31,11 @@ uint8_t Touchscreen::checkButtons(void)
 	uint8_t y = 0;
 	
 	TouchDriv.getCoordinates(&x, &y);
-	
+	SendString("X value: ");
+	SendInteger(x);
+	SendString("y value: ");
+	SendInteger(y);
+	SendString("\r\n");
 	if (x > blueBnt.startX/1.33 && x < blueBnt.endX/1.33 && y > blueBnt.startY && y < blueBnt.endY)
 	{
 		return 1;
