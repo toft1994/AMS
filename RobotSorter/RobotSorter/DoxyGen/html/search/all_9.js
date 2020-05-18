@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['percent_5f_33',['percent_',['../class_motor.html#a3b3bdf438597e3ab48f8a7a110fdf74d',1,'Motor']]],
-  ['percentprdeg_34',['percentPrDeg',['../class_motor.html#a170e32625830672d4619dd06168ab448',1,'Motor']]]
+  ['oldpercent_5f_36',['oldPercent_',['../class_motor.html#ab598fdedb58637275db36f89478b6774',1,'Motor']]]
 ];

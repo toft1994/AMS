@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['keypad_56',['KeyPad',['../class_key_pad.html',1,'']]]
+  ['color_61',['Color',['../class_color.html',1,'']]],
+  ['colorsensor_62',['ColorSensor',['../class_color_sensor.html',1,'']]]
 ];

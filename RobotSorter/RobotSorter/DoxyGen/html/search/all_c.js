@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['timer1_46',['Timer1',['../class_timer1.html',1,'']]],
-  ['timer4_47',['Timer4',['../class_timer4.html',1,'']]],
-  ['timer5_48',['Timer5',['../class_timer5.html',1,'']]],
-  ['tmr1_5f_49',['tmr1_',['../class_robotarm.html#a2b723df6d17b343f4882b5f1146a9fa4',1,'Robotarm']]],
-  ['tmr1ptr_5f_50',['tmr1Ptr_',['../class_motor.html#a4509e99a9c263abec25a1b98dda366ac',1,'Motor']]],
-  ['tmr3_5f_51',['tmr3_',['../class_robotarm.html#a65fb8b951404990044366d9f7b99a941',1,'Robotarm']]],
-  ['tmr3ptr_5f_52',['tmr3Ptr_',['../class_motor.html#a2c8d38ef78a5e68ae396e4fff137416e',1,'Motor']]],
-  ['turnmotor_53',['TurnMotor',['../class_m1.html#acb172e7352b3dedf1da4814528825e8c',1,'M1::TurnMotor()'],['../class_m2.html#add8c472c87bba48daf166c7361a5e607',1,'M2::TurnMotor()'],['../class_m3.html#a846469a0da428c71e24a7c2cd9a3650e',1,'M3::TurnMotor()'],['../class_m4.html#a45b54a400f6baa50f17cbc2e54326b2c',1,'M4::TurnMotor()'],['../class_m5.html#a071285ea613db1883c716877cd3dae7e',1,'M5::TurnMotor()'],['../class_m6.html#ae4a213fa1fbfb27ba2de63ce38fa26d3',1,'M6::TurnMotor()'],['../class_motor.html#a521ede88d44cace22784ad932f792502',1,'Motor::TurnMotor()']]]
+  ['setblueperiod_40',['setBluePeriod',['../class_color.html#af1e0d2367f0ee81015e61371d44e95ab',1,'Color']]],
+  ['setcolorindex_41',['setColorIndex',['../class_color.html#a12f2c94fb4fcdf9d94a0346880c431ee',1,'Color']]],
+  ['setdegrees_42',['SetDegrees',['../class_motor.html#ab678fcdf0115fcba553b4410afd1c0f9',1,'Motor']]],
+  ['setdutycyclecoma_43',['setDutyCycleComA',['../class_timer1.html#abd731335a9d00ad8b9b7a16b3f77ebb8',1,'Timer1::setDutyCycleComA()'],['../class_timer5.html#a8a5bcda5c21baf910cfe32d899a3825d',1,'Timer5::setDutyCycleComA()']]],
+  ['setdutycyclecomb_44',['setDutyCycleComB',['../class_timer1.html#a9d9079a1c94420505c00abee32565e11',1,'Timer1::setDutyCycleComB()'],['../class_timer5.html#a5af3e62d2aab1e86b0cf10b355012d40',1,'Timer5::setDutyCycleComB()']]],
+  ['setdutycyclecomc_45',['setDutyCycleComC',['../class_timer1.html#adeb1c1386394959ebf8ed8563e8319e7',1,'Timer1::setDutyCycleComC()'],['../class_timer5.html#a8b8be2961dd5de710227601988060b99',1,'Timer5::setDutyCycleComC()']]],
+  ['setgreenperiod_46',['setGreenPeriod',['../class_color.html#a9e2b82a12b755509a8e41af023b109ae',1,'Color']]],
+  ['setredperiod_47',['setRedPeriod',['../class_color.html#a5c7158407c5f1c204645831bd728a1c5',1,'Color']]],
+  ['setwhiteperiod_48',['setWhitePeriod',['../class_color.html#a4bca0dffffbb1074a91c52d3732b4d58',1,'Color']]],
+  ['startpercent_5f_49',['startpercent_',['../class_motor.html#af84b965915754a931019d47c4287726f',1,'Motor']]]
 ];

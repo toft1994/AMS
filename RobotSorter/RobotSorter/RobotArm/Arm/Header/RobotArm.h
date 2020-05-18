@@ -19,6 +19,9 @@ class Robotarm
 	public:
 	Robotarm();
 	
+	void MoveItem( uint8_t color );
+	
+	private:
 	/**
 	*    Picks up item from standard position.
 	*    @param void Nothing
@@ -73,8 +76,7 @@ class Robotarm
 	*    @return void Nothing
 	*/
 	void moveBlockToZoneSix();
-
-	private:
+	
 	static void startMotorImpl( void *pvParameters );
 	void ArmDownReleaseItem();
 	inline void MotorSpeedController();

@@ -35,6 +35,57 @@ Robotarm::Robotarm() : tmr1_(), tmr3_()
 	xTaskCreate(this->startMotorImpl,  ( signed char * ) "Motors", configMAIN_STACK_SIZE, this, tskIDLE_PRIORITY, NULL);
 }
 
+void Robotarm::MoveItem( uint8_t color )
+{
+	switch ( color )
+	{
+		case 0U:
+		grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS ); // This might not be needed!!! it can be added in Robotarm!!!! we will seeee later
+		moveBlockToZoneOne();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 1U:
+		grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		moveBlockToZoneTwo();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 2U:
+		grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		moveBlockToZoneThree();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 3U:
+		grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		moveBlockToZoneFour();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 4U:
+		grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		moveBlockToZoneFive();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		case 5U:
+		grabBlock();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		moveBlockToZoneSix();
+		vTaskDelay( 500 / portTICK_RATE_MS );
+		break;
+		
+		default:
+		break;
+	}
+}
+
 void Robotarm::grabBlock()
 {
 	motors_[3]->SetDegrees(40);
@@ -86,7 +137,6 @@ void Robotarm::moveBlockToZoneSix()
 	motors_[0]->SetDegrees(180);
 	ArmDownReleaseItem();
 }
-
 
 void Robotarm::ArmDownReleaseItem()
 {
