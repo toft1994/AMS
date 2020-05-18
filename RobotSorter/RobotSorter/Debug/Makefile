@@ -75,6 +75,7 @@ C_SRCS +=  \
 ../ColorSensor/source/ColorSensor.cpp \
 ../ColorSensor/source/Timer4.cpp \
 ../Keypad/Source/KeyPad.cpp \
+../Keypad/Source/LoginInterface.cpp \
 ../main.cpp \
 ../RobotArm/Arm/Source/RobotArm.cpp \
 ../RobotArm/Motor/Source/M1.cpp \
@@ -109,6 +110,7 @@ ColorSensor/source/Color.o \
 ColorSensor/source/ColorSensor.o \
 ColorSensor/source/Timer4.o \
 Keypad/Source/KeyPad.o \
+Keypad/Source/LoginInterface.o \
 main.o \
 RobotArm/Arm/Source/RobotArm.o \
 RobotArm/Motor/Source/M1.o \
@@ -136,6 +138,7 @@ ColorSensor/source/Color.o \
 ColorSensor/source/ColorSensor.o \
 ColorSensor/source/Timer4.o \
 Keypad/Source/KeyPad.o \
+Keypad/Source/LoginInterface.o \
 main.o \
 RobotArm/Arm/Source/RobotArm.o \
 RobotArm/Motor/Source/M1.o \
@@ -163,6 +166,7 @@ ColorSensor/source/Color.d \
 ColorSensor/source/ColorSensor.d \
 ColorSensor/source/Timer4.d \
 Keypad/Source/KeyPad.d \
+Keypad/Source/LoginInterface.d \
 main.d \
 RobotArm/Arm/Source/RobotArm.d \
 RobotArm/Motor/Source/M1.d \
@@ -190,6 +194,7 @@ ColorSensor/source/Color.d \
 ColorSensor/source/ColorSensor.d \
 ColorSensor/source/Timer4.d \
 Keypad/Source/KeyPad.d \
+Keypad/Source/LoginInterface.d \
 main.d \
 RobotArm/Arm/Source/RobotArm.d \
 RobotArm/Motor/Source/M1.d \
@@ -248,6 +253,13 @@ ColorSensor/source/Timer4.o: ../ColorSensor/source/Timer4.cpp
 	
 
 Keypad/Source/KeyPad.o: ../Keypad/Source/KeyPad.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header" -I"../Keypad/Header" -I"../RobotArm/Arm/Header" -I"../TouchDisplay/TouchScreen/Header" -I"../TouchDisplay/DisplayDriver/Header" -I"../TouchDisplay/TouchDriver/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Keypad/Source/LoginInterface.o: ../Keypad/Source/LoginInterface.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Source/include" -I".." -I"../Source/portable/GCC/ATMega2560" -I"../ColorSensor/header" -I"../RobotArm/Motor/Header" -I"../RobotArm/Timers/Header" -I"../Keypad/Header" -I"../RobotArm/Arm/Header" -I"../TouchDisplay/TouchScreen/Header" -I"../TouchDisplay/DisplayDriver/Header" -I"../TouchDisplay/TouchDriver/Header"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -10,6 +10,7 @@
 #include "RobotArm.h"
 #include "Touchscreen.h"
 #include "KeyPad.h"
+#include "LoginInterface.h"
 
 /* RTOS include */
 #include "FreeRTOS.h"
@@ -23,14 +24,15 @@
 Robotarm arm = Robotarm();
 ColorSensor csensor = ColorSensor( twentyPercent );
 Touchscreen screen = Touchscreen();
+LoginInterface Login = LoginInterface();
 
 uint8_t colorIndex = 0;
 
-void Keypad( void *pvParameters )
+void LoginKeyPad( void *pvParameters )
 {
 	while (1)
 	{
-		//Keypad.Run();
+		Login.checkLogin();
 	}
 }
 
@@ -40,7 +42,7 @@ void DisplayArm( void *pvParameters )
 	{
 		screen.clearScreen();
 		
-		while ( /* Keypad.AccessGranted == */ 1 ) 
+		while ( Login.getstateOfMachine() == 'U' ) 
 		{
 			screen.presentButtonsOnDisplay();
 			
@@ -65,7 +67,7 @@ void DisplayArm( void *pvParameters )
 int main(void)
 {
 	xTaskCreate(DisplayArm,  ( signed char * ) "Display + Arm Task", configMAIN_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
-	xTaskCreate(Keypad,  ( signed char * ) "Keypad Task", configMAIN_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
+	xTaskCreate(LoginKeyPad,  ( signed char * ) "Keypad Task", configMAIN_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
 	vTaskStartScheduler();
 
 	while (1)

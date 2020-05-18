@@ -10,6 +10,8 @@ ColorSensor\source\Timer4.cpp
 
 Keypad\Source\KeyPad.cpp
 
+Keypad\Source\LoginInterface.cpp
+
 main.cpp
 
 RobotArm\Arm\Source\RobotArm.cpp
