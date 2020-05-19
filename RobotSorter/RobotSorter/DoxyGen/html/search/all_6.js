@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['getblueperiod_12',['getBluePeriod',['../class_color.html#a88ec236508da7cd030e8275d9993a5a7',1,'Color']]],
-  ['getcolor_13',['getColor',['../class_color_sensor.html#a7e18519451f816192e777c085df260fc',1,'ColorSensor']]],
-  ['getcolorindex_14',['getColorIndex',['../class_color.html#ac3d87823cd9efcd110dd82a3d41f9a41',1,'Color']]],
-  ['getgreenperiod_15',['getGreenPeriod',['../class_color.html#a747a22111664bd9b50eaa54c5b7fc108',1,'Color']]],
-  ['getperiod_16',['getPeriod',['../class_timer4.html#ab0890cb317a04269de25f6516db28773',1,'Timer4']]],
-  ['getredperiod_17',['getRedPeriod',['../class_color.html#a25b5c0754b698d8e96ddaa87e67ac98c',1,'Color']]],
-  ['getwhiteperiod_18',['getWhitePeriod',['../class_color.html#aabc50f74e3f93d507ecbffaed7cf5051',1,'Color']]],
-  ['grabblock_19',['grabBlock',['../class_robotarm.html#a49bfa11647b8320ed919bce51866f556',1,'Robotarm']]]
+  ['findkey_22',['findKey',['../class_key_pad.html#a6adf7b6d6396b5e91b7ad34389307b37',1,'KeyPad']]],
+  ['frequency_5f_23',['frequency_',['../class_color_sensor.html#ad5fe2a0666a5c9d5496de486af28cf32',1,'ColorSensor']]]
 ];

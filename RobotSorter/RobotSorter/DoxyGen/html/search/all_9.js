@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oldpercent_5f_36',['oldPercent_',['../class_motor.html#ab598fdedb58637275db36f89478b6774',1,'Motor']]]
+  ['inittouchdriver_36',['initTouchDriver',['../class_touch_driver.html#abb6f2abd418e13b9c4fbf7807a7e9a24',1,'TouchDriver']]]
 ];

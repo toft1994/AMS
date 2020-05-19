@@ -84,49 +84,72 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_button_class.html">ButtonClass</a>()</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        startX = 0;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        startY = 0;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        height = 0;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        width = 0;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        colorRed = 0;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        colorBlue = 0;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        colorGreen = 0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        endX = 0;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        endY = 0;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_button_class.html">ButtonClass</a>(uint8_t StartX, uint8_t StartY, uint16_t EndX, uint8_t EndY, uint8_t ColorRed, uint8_t ColorBlue, uint8_t ColorGreen)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        startX = StartX;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        startY = StartY;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        endX = EndX;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        endY = EndY;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        width = EndX-StartX;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        height = EndY-StartY;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        colorRed = ColorRed;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        colorBlue = ColorBlue;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        colorGreen = ColorGreen;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    uint8_t startX;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    uint8_t startY;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    uint8_t height;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    uint8_t width;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    uint8_t colorRed;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    uint8_t colorBlue;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    uint8_t colorGreen;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    uint16_t endX;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint8_t endY;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BUTTONCLASS_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">// Default Constructor</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_button_class.html">ButtonClass</a>()</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_button_class.html#ac04bece5195ada9537ef7f54618238e4">startX</a> = 0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_button_class.html#afaf5ab58620b37a73a9a492f2b7fb18b">startY</a> = 0;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_button_class.html#a41d53d163a1958d4fe3bcafde69b7af7">height</a> = 0;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_button_class.html#aac94ed2d99de5e750cc630b82b7ffe08">width</a> = 0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_button_class.html#a375b7f91a2bad22ca6a4de2094702cc2">colorRed</a> = 0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_button_class.html#a15853832e3c560797a71dfb34e9e85c1">colorBlue</a> = 0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="class_button_class.html#ae6ae01cc5a133bd9255366e48a0f7132">colorGreen</a> = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_button_class.html#a8a1dfd6ea6939964e1b318d94cdbd1c2">endX</a> = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_button_class.html#aabcbd21b8a79019228e891283edb3d80">endY</a> = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_button_class.html#a7c513ded60a90d350828030bd0d93eb2">   41</a></span>&#160;    <a class="code" href="class_button_class.html#a7c513ded60a90d350828030bd0d93eb2">ButtonClass</a>(uint8_t StartX, uint8_t StartY, uint16_t EndX, uint8_t EndY, uint8_t ColorRed, uint8_t ColorBlue, uint8_t ColorGreen)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="class_button_class.html#ac04bece5195ada9537ef7f54618238e4">startX</a> = StartX;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="class_button_class.html#afaf5ab58620b37a73a9a492f2b7fb18b">startY</a> = StartY;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="class_button_class.html#a8a1dfd6ea6939964e1b318d94cdbd1c2">endX</a> = EndX;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="class_button_class.html#aabcbd21b8a79019228e891283edb3d80">endY</a> = EndY;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="class_button_class.html#aac94ed2d99de5e750cc630b82b7ffe08">width</a> = EndX-StartX;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="class_button_class.html#a41d53d163a1958d4fe3bcafde69b7af7">height</a> = EndY-StartY;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="class_button_class.html#a375b7f91a2bad22ca6a4de2094702cc2">colorRed</a> = ColorRed;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="class_button_class.html#a15853832e3c560797a71dfb34e9e85c1">colorBlue</a> = ColorBlue;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="class_button_class.html#ae6ae01cc5a133bd9255366e48a0f7132">colorGreen</a> = ColorGreen;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    ~<a class="code" href="class_button_class.html">ButtonClass</a>()</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {   </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_button_class.html#ac04bece5195ada9537ef7f54618238e4">   61</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#ac04bece5195ada9537ef7f54618238e4">startX</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_button_class.html#afaf5ab58620b37a73a9a492f2b7fb18b">   66</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#afaf5ab58620b37a73a9a492f2b7fb18b">startY</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_button_class.html#a41d53d163a1958d4fe3bcafde69b7af7">   71</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#a41d53d163a1958d4fe3bcafde69b7af7">height</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_button_class.html#aac94ed2d99de5e750cc630b82b7ffe08">   76</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#aac94ed2d99de5e750cc630b82b7ffe08">width</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_button_class.html#a375b7f91a2bad22ca6a4de2094702cc2">   81</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#a375b7f91a2bad22ca6a4de2094702cc2">colorRed</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_button_class.html#a15853832e3c560797a71dfb34e9e85c1">   86</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#a15853832e3c560797a71dfb34e9e85c1">colorBlue</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_button_class.html#ae6ae01cc5a133bd9255366e48a0f7132">   91</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#ae6ae01cc5a133bd9255366e48a0f7132">colorGreen</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_button_class.html#a8a1dfd6ea6939964e1b318d94cdbd1c2">   96</a></span>&#160;    uint16_t <a class="code" href="class_button_class.html#a8a1dfd6ea6939964e1b318d94cdbd1c2">endX</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_button_class.html#aabcbd21b8a79019228e891283edb3d80">  101</a></span>&#160;    uint8_t <a class="code" href="class_button_class.html#aabcbd21b8a79019228e891283edb3d80">endY</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BUTTONCLASS_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_button_class_html"><div class="ttname"><a href="class_button_class.html">ButtonClass</a></div><div class="ttdef"><b>Definition:</b> ButtonClass.h:12</div></div>
+<div class="ttc" id="aclass_button_class_html_a7c513ded60a90d350828030bd0d93eb2"><div class="ttname"><a href="class_button_class.html#a7c513ded60a90d350828030bd0d93eb2">ButtonClass::ButtonClass</a></div><div class="ttdeci">ButtonClass(uint8_t StartX, uint8_t StartY, uint16_t EndX, uint8_t EndY, uint8_t ColorRed, uint8_t ColorBlue, uint8_t ColorGreen)</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:41</div></div>
+<div class="ttc" id="aclass_button_class_html_afaf5ab58620b37a73a9a492f2b7fb18b"><div class="ttname"><a href="class_button_class.html#afaf5ab58620b37a73a9a492f2b7fb18b">ButtonClass::startY</a></div><div class="ttdeci">uint8_t startY</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:66</div></div>
+<div class="ttc" id="aclass_button_class_html_aac94ed2d99de5e750cc630b82b7ffe08"><div class="ttname"><a href="class_button_class.html#aac94ed2d99de5e750cc630b82b7ffe08">ButtonClass::width</a></div><div class="ttdeci">uint8_t width</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:76</div></div>
+<div class="ttc" id="aclass_button_class_html_a8a1dfd6ea6939964e1b318d94cdbd1c2"><div class="ttname"><a href="class_button_class.html#a8a1dfd6ea6939964e1b318d94cdbd1c2">ButtonClass::endX</a></div><div class="ttdeci">uint16_t endX</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:96</div></div>
+<div class="ttc" id="aclass_button_class_html_a375b7f91a2bad22ca6a4de2094702cc2"><div class="ttname"><a href="class_button_class.html#a375b7f91a2bad22ca6a4de2094702cc2">ButtonClass::colorRed</a></div><div class="ttdeci">uint8_t colorRed</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:81</div></div>
+<div class="ttc" id="aclass_button_class_html_a15853832e3c560797a71dfb34e9e85c1"><div class="ttname"><a href="class_button_class.html#a15853832e3c560797a71dfb34e9e85c1">ButtonClass::colorBlue</a></div><div class="ttdeci">uint8_t colorBlue</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:86</div></div>
+<div class="ttc" id="aclass_button_class_html_ae6ae01cc5a133bd9255366e48a0f7132"><div class="ttname"><a href="class_button_class.html#ae6ae01cc5a133bd9255366e48a0f7132">ButtonClass::colorGreen</a></div><div class="ttdeci">uint8_t colorGreen</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:91</div></div>
+<div class="ttc" id="aclass_button_class_html_ac04bece5195ada9537ef7f54618238e4"><div class="ttname"><a href="class_button_class.html#ac04bece5195ada9537ef7f54618238e4">ButtonClass::startX</a></div><div class="ttdeci">uint8_t startX</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:61</div></div>
+<div class="ttc" id="aclass_button_class_html_aabcbd21b8a79019228e891283edb3d80"><div class="ttname"><a href="class_button_class.html#aabcbd21b8a79019228e891283edb3d80">ButtonClass::endY</a></div><div class="ttdeci">uint8_t endY</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:101</div></div>
+<div class="ttc" id="aclass_button_class_html_a41d53d163a1958d4fe3bcafde69b7af7"><div class="ttname"><a href="class_button_class.html#a41d53d163a1958d4fe3bcafde69b7af7">ButtonClass::height</a></div><div class="ttdeci">uint8_t height</div><div class="ttdef"><b>Definition:</b> ButtonClass.h:71</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

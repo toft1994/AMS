@@ -88,27 +88,33 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_touchscreen.html">Touchscreen</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> clearScreen(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    uint8_t checkButtons(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> presentButtonsOnDisplay(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_touch_driver.html">TouchDriver</a> TouchDriv;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_button_class.html">ButtonClass</a> blueBnt;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_button_class.html">ButtonClass</a> greenBnt;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TOUCHSCREEN_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="class_touchscreen.html">Touchscreen</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_touchscreen.html#a0686b3a68e0dc0f26d25fd43f003915b">clearScreen</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    uint8_t <a class="code" href="class_touchscreen.html#a5ad947f52fb4957ea82c3efcac4dc3db">checkButtons</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_touchscreen.html#ac87267189e3b76ef0de15427f20c52ee">presentButtonsOnDisplay</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_touchscreen.html#a7308c7d2f6dde9b4288151f859571027">   48</a></span>&#160;    <a class="code" href="class_touch_driver.html">TouchDriver</a> <a class="code" href="class_touchscreen.html#a7308c7d2f6dde9b4288151f859571027">TouchDriv</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_touchscreen.html#a02889e7409ce90297fb70cd01d773e6e">   52</a></span>&#160;    <a class="code" href="class_button_class.html">ButtonClass</a> <a class="code" href="class_touchscreen.html#a02889e7409ce90297fb70cd01d773e6e">blueBnt</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_touchscreen.html#a07854cac82087830cef05e1c6bb0198b">   56</a></span>&#160;    <a class="code" href="class_button_class.html">ButtonClass</a> <a class="code" href="class_touchscreen.html#a07854cac82087830cef05e1c6bb0198b">greenBnt</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TOUCHSCREEN_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_button_class_html"><div class="ttname"><a href="class_button_class.html">ButtonClass</a></div><div class="ttdef"><b>Definition:</b> ButtonClass.h:12</div></div>
 <div class="ttc" id="aclass_touchscreen_html"><div class="ttname"><a href="class_touchscreen.html">Touchscreen</a></div><div class="ttdef"><b>Definition:</b> Touchscreen.h:15</div></div>
+<div class="ttc" id="aclass_touchscreen_html_a07854cac82087830cef05e1c6bb0198b"><div class="ttname"><a href="class_touchscreen.html#a07854cac82087830cef05e1c6bb0198b">Touchscreen::greenBnt</a></div><div class="ttdeci">ButtonClass greenBnt</div><div class="ttdef"><b>Definition:</b> Touchscreen.h:56</div></div>
+<div class="ttc" id="aclass_touchscreen_html_a02889e7409ce90297fb70cd01d773e6e"><div class="ttname"><a href="class_touchscreen.html#a02889e7409ce90297fb70cd01d773e6e">Touchscreen::blueBnt</a></div><div class="ttdeci">ButtonClass blueBnt</div><div class="ttdef"><b>Definition:</b> Touchscreen.h:52</div></div>
+<div class="ttc" id="aclass_touchscreen_html_a5ad947f52fb4957ea82c3efcac4dc3db"><div class="ttname"><a href="class_touchscreen.html#a5ad947f52fb4957ea82c3efcac4dc3db">Touchscreen::checkButtons</a></div><div class="ttdeci">uint8_t checkButtons(void)</div><div class="ttdef"><b>Definition:</b> Touchscreen.cpp:32</div></div>
+<div class="ttc" id="aclass_touchscreen_html_a0686b3a68e0dc0f26d25fd43f003915b"><div class="ttname"><a href="class_touchscreen.html#a0686b3a68e0dc0f26d25fd43f003915b">Touchscreen::clearScreen</a></div><div class="ttdeci">void clearScreen(void)</div><div class="ttdef"><b>Definition:</b> Touchscreen.cpp:64</div></div>
 <div class="ttc" id="aclass_touch_driver_html"><div class="ttname"><a href="class_touch_driver.html">TouchDriver</a></div><div class="ttdef"><b>Definition:</b> TouchDriver.h:12</div></div>
+<div class="ttc" id="aclass_touchscreen_html_ac87267189e3b76ef0de15427f20c52ee"><div class="ttname"><a href="class_touchscreen.html#ac87267189e3b76ef0de15427f20c52ee">Touchscreen::presentButtonsOnDisplay</a></div><div class="ttdeci">void presentButtonsOnDisplay(void)</div><div class="ttdef"><b>Definition:</b> Touchscreen.cpp:70</div></div>
+<div class="ttc" id="aclass_touchscreen_html_a7308c7d2f6dde9b4288151f859571027"><div class="ttname"><a href="class_touchscreen.html#a7308c7d2f6dde9b4288151f859571027">Touchscreen::TouchDriv</a></div><div class="ttdeci">TouchDriver TouchDriv</div><div class="ttdef"><b>Definition:</b> Touchscreen.h:48</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

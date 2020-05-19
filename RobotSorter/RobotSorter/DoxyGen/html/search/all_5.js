@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['frequency_5f_11',['frequency_',['../class_color_sensor.html#ad5fe2a0666a5c9d5496de486af28cf32',1,'ColorSensor']]]
+  ['endx_20',['endX',['../class_button_class.html#a8a1dfd6ea6939964e1b318d94cdbd1c2',1,'ButtonClass']]],
+  ['endy_21',['endY',['../class_button_class.html#aabcbd21b8a79019228e891283edb3d80',1,'ButtonClass']]]
 ];

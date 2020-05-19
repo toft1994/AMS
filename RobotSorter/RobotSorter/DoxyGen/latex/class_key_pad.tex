@@ -3,15 +3,44 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_key_pad_aab84acb9d3e8ea79c3c54446f1f5e571}\label{class_key_pad_aab84acb9d3e8ea79c3c54446f1f5e571}} 
-char {\bfseries read\+Keyboard} (void)
+char \mbox{\hyperlink{class_key_pad_aab84acb9d3e8ea79c3c54446f1f5e571}{read\+Keyboard}} (void)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_key_pad_a6adf7b6d6396b5e91b7ad34389307b37}\label{class_key_pad_a6adf7b6d6396b5e91b7ad34389307b37}} 
-char {\bfseries find\+Key} (uint8\+\_\+t)
+char \mbox{\hyperlink{class_key_pad_a6adf7b6d6396b5e91b7ad34389307b37}{find\+Key}} (uint8\+\_\+t)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_key_pad_a6adf7b6d6396b5e91b7ad34389307b37}\label{class_key_pad_a6adf7b6d6396b5e91b7ad34389307b37}} 
+\index{KeyPad@{KeyPad}!findKey@{findKey}}
+\index{findKey@{findKey}!KeyPad@{KeyPad}}
+\doxysubsubsection{\texorpdfstring{findKey()}{findKey()}}
+{\footnotesize\ttfamily char Key\+Pad\+::find\+Key (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pin\+\_\+press }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Finds the characters pressed on keyboard from the 2 bit set in param 
+\begin{DoxyParams}{Parameters}
+{\em uint8\+\_\+t} & The byte with 2 bits set corresponding to row and column pressed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char, character corresponding to the param byte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_key_pad_aab84acb9d3e8ea79c3c54446f1f5e571}\label{class_key_pad_aab84acb9d3e8ea79c3c54446f1f5e571}} 
+\index{KeyPad@{KeyPad}!readKeyboard@{readKeyboard}}
+\index{readKeyboard@{readKeyboard}!KeyPad@{KeyPad}}
+\doxysubsubsection{\texorpdfstring{readKeyboard()}{readKeyboard()}}
+{\footnotesize\ttfamily char Key\+Pad\+::read\+Keyboard (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Reads the key pressed on the keyboard. This function is blocking And will first return when no key is pressed again 
+\begin{DoxyParams}{Parameters}
+{\em void} & Nothing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char, character pressed on keypad 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

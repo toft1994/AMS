@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['oldpercent_5f_112',['oldPercent_',['../class_motor.html#ab598fdedb58637275db36f89478b6774',1,'Motor']]]
+  ['endx_156',['endX',['../class_button_class.html#a8a1dfd6ea6939964e1b318d94cdbd1c2',1,'ButtonClass']]],
+  ['endy_157',['endY',['../class_button_class.html#aabcbd21b8a79019228e891283edb3d80',1,'ButtonClass']]]
 ];

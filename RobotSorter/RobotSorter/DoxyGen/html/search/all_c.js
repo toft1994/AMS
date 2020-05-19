@@ -1,13 +1,18 @@
 var searchData=
 [
-  ['setblueperiod_40',['setBluePeriod',['../class_color.html#af1e0d2367f0ee81015e61371d44e95ab',1,'Color']]],
-  ['setcolorindex_41',['setColorIndex',['../class_color.html#a12f2c94fb4fcdf9d94a0346880c431ee',1,'Color']]],
-  ['setdegrees_42',['SetDegrees',['../class_motor.html#ab678fcdf0115fcba553b4410afd1c0f9',1,'Motor']]],
-  ['setdutycyclecoma_43',['setDutyCycleComA',['../class_timer1.html#abd731335a9d00ad8b9b7a16b3f77ebb8',1,'Timer1::setDutyCycleComA()'],['../class_timer5.html#a8a5bcda5c21baf910cfe32d899a3825d',1,'Timer5::setDutyCycleComA()']]],
-  ['setdutycyclecomb_44',['setDutyCycleComB',['../class_timer1.html#a9d9079a1c94420505c00abee32565e11',1,'Timer1::setDutyCycleComB()'],['../class_timer5.html#a5af3e62d2aab1e86b0cf10b355012d40',1,'Timer5::setDutyCycleComB()']]],
-  ['setdutycyclecomc_45',['setDutyCycleComC',['../class_timer1.html#adeb1c1386394959ebf8ed8563e8319e7',1,'Timer1::setDutyCycleComC()'],['../class_timer5.html#a8b8be2961dd5de710227601988060b99',1,'Timer5::setDutyCycleComC()']]],
-  ['setgreenperiod_46',['setGreenPeriod',['../class_color.html#a9e2b82a12b755509a8e41af023b109ae',1,'Color']]],
-  ['setredperiod_47',['setRedPeriod',['../class_color.html#a5c7158407c5f1c204645831bd728a1c5',1,'Color']]],
-  ['setwhiteperiod_48',['setWhitePeriod',['../class_color.html#a4bca0dffffbb1074a91c52d3732b4d58',1,'Color']]],
-  ['startpercent_5f_49',['startpercent_',['../class_motor.html#af84b965915754a931019d47c4287726f',1,'Motor']]]
+  ['m1_39',['M1',['../class_m1.html',1,'']]],
+  ['m2_40',['M2',['../class_m2.html',1,'']]],
+  ['m3_41',['M3',['../class_m3.html',1,'']]],
+  ['m4_42',['M4',['../class_m4.html',1,'']]],
+  ['m5_43',['M5',['../class_m5.html',1,'']]],
+  ['m6_44',['M6',['../class_m6.html',1,'']]],
+  ['maxdegrees_5f_45',['maxDegrees_',['../class_motor.html#af5b4ee367d6ac93a1101a1940072542d',1,'Motor']]],
+  ['motor_46',['Motor',['../class_motor.html',1,'']]],
+  ['motors_5f_47',['motors_',['../class_robotarm.html#ae1bf40e3e0ffa36440b5a3964b2e0331',1,'Robotarm']]],
+  ['moveblocktozonefive_48',['moveBlockToZoneFive',['../class_robotarm.html#af6f38d60e395c85c587d8e7819d3be64',1,'Robotarm']]],
+  ['moveblocktozonefour_49',['moveBlockToZoneFour',['../class_robotarm.html#a116460172ccbb64d44f02d49b1b1eb5f',1,'Robotarm']]],
+  ['moveblocktozoneone_50',['moveBlockToZoneOne',['../class_robotarm.html#a443b66b5a32dc6f511af36730de1e300',1,'Robotarm']]],
+  ['moveblocktozonesix_51',['moveBlockToZoneSix',['../class_robotarm.html#a5551e22800f39093dcaf6262a729c291',1,'Robotarm']]],
+  ['moveblocktozonethree_52',['moveBlockToZoneThree',['../class_robotarm.html#ae6367b5a2fbb562ba01e516d963423ff',1,'Robotarm']]],
+  ['moveblocktozonetwo_53',['moveBlockToZoneTwo',['../class_robotarm.html#a4c4dce7eacbb166816ec0e957117e9f4',1,'Robotarm']]]
 ];

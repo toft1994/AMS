@@ -72,16 +72,73 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aab84acb9d3e8ea79c3c54446f1f5e571"><td class="memItemLeft" align="right" valign="top"><a id="aab84acb9d3e8ea79c3c54446f1f5e571"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>readKeyboard</b> (void)</td></tr>
+<tr class="memitem:aab84acb9d3e8ea79c3c54446f1f5e571"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_key_pad.html#aab84acb9d3e8ea79c3c54446f1f5e571">readKeyboard</a> (void)</td></tr>
 <tr class="separator:aab84acb9d3e8ea79c3c54446f1f5e571"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a6adf7b6d6396b5e91b7ad34389307b37"><td class="memItemLeft" align="right" valign="top"><a id="a6adf7b6d6396b5e91b7ad34389307b37"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>findKey</b> (uint8_t)</td></tr>
+<tr class="memitem:a6adf7b6d6396b5e91b7ad34389307b37"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_key_pad.html#a6adf7b6d6396b5e91b7ad34389307b37">findKey</a> (uint8_t)</td></tr>
 <tr class="separator:a6adf7b6d6396b5e91b7ad34389307b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6adf7b6d6396b5e91b7ad34389307b37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6adf7b6d6396b5e91b7ad34389307b37">&#9670;&nbsp;</a></span>findKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char KeyPad::findKey </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>pin_press</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Finds the characters pressed on keyboard from the 2 bit set in param </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uint8_t</td><td>The byte with 2 bits set corresponding to row and column pressed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char, character corresponding to the param byte </dd></dl>
+
+</div>
+</div>
+<a id="aab84acb9d3e8ea79c3c54446f1f5e571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab84acb9d3e8ea79c3c54446f1f5e571">&#9670;&nbsp;</a></span>readKeyboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char KeyPad::readKeyboard </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Reads the key pressed on the keyboard. This function is blocking And will first return when no key is pressed again </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td>Nothing </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char, character pressed on keypad </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>RobotSorter/RobotSorter/Keypad/Header/<a class="el" href="_key_pad_8h_source.html">KeyPad.h</a></li>
 <li>RobotSorter/RobotSorter/Keypad/Source/KeyPad.cpp</li>

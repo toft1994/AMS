@@ -1,4 +1,13 @@
 var searchData=
 [
-  ['turnmotor_101',['TurnMotor',['../class_m1.html#acb172e7352b3dedf1da4814528825e8c',1,'M1::TurnMotor()'],['../class_m2.html#add8c472c87bba48daf166c7361a5e607',1,'M2::TurnMotor()'],['../class_m3.html#a846469a0da428c71e24a7c2cd9a3650e',1,'M3::TurnMotor()'],['../class_m4.html#a45b54a400f6baa50f17cbc2e54326b2c',1,'M4::TurnMotor()'],['../class_m5.html#a071285ea613db1883c716877cd3dae7e',1,'M5::TurnMotor()'],['../class_m6.html#ae4a213fa1fbfb27ba2de63ce38fa26d3',1,'M6::TurnMotor()'],['../class_motor.html#a521ede88d44cace22784ad932f792502',1,'Motor::TurnMotor()']]]
+  ['getblueperiod_112',['getBluePeriod',['../class_color.html#a88ec236508da7cd030e8275d9993a5a7',1,'Color']]],
+  ['getcolor_113',['getColor',['../class_color_sensor.html#a7e18519451f816192e777c085df260fc',1,'ColorSensor']]],
+  ['getcolorindex_114',['getColorIndex',['../class_color.html#ac3d87823cd9efcd110dd82a3d41f9a41',1,'Color']]],
+  ['getcoordinates_115',['getCoordinates',['../class_touch_driver.html#a402b869f582be44c06795c547d6f397e',1,'TouchDriver']]],
+  ['getgreenperiod_116',['getGreenPeriod',['../class_color.html#a747a22111664bd9b50eaa54c5b7fc108',1,'Color']]],
+  ['getperiod_117',['getPeriod',['../class_timer4.html#ab0890cb317a04269de25f6516db28773',1,'Timer4']]],
+  ['getredperiod_118',['getRedPeriod',['../class_color.html#a25b5c0754b698d8e96ddaa87e67ac98c',1,'Color']]],
+  ['getstateofmachine_119',['getstateOfMachine',['../class_login_interface.html#a443c5438a7a2af9f3f75a6e950227337',1,'LoginInterface']]],
+  ['getwhiteperiod_120',['getWhitePeriod',['../class_color.html#aabc50f74e3f93d507ecbffaed7cf5051',1,'Color']]],
+  ['grabblock_121',['grabBlock',['../class_robotarm.html#a49bfa11647b8320ed919bce51866f556',1,'Robotarm']]]
 ];

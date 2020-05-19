@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['maxdegrees_5f_110',['maxDegrees_',['../class_motor.html#af5b4ee367d6ac93a1101a1940072542d',1,'Motor']]],
-  ['motors_5f_111',['motors_',['../class_robotarm.html#ae1bf40e3e0ffa36440b5a3964b2e0331',1,'Robotarm']]]
+  ['delay_5f_153',['delay_',['../class_motor.html#ab015edc22d29eaf97861b55f60401178',1,'Motor']]],
+  ['dinxbyte_154',['dinXByte',['../class_touch_driver.html#a6efd31b72b8601f24b7ca7dec087be56',1,'TouchDriver']]],
+  ['dinybyte_155',['dinYByte',['../class_touch_driver.html#a21e5d06ed7c6c32becbdca5b55131e89',1,'TouchDriver']]]
 ];
