@@ -6,26 +6,15 @@
  */ 
 
 /*
- *	1_0 = PF3	ROW 1
- *	1_1 = PF4	ROW 2
- *	1_2 = PF2	ROW 3
- *	1_3 = PF5	ROW 4
- *	1_4 = PF1	COLOUMN 1
- *	1_5 = PF6	COLOUMN 2
- *	1_6 = PF0	COLOUMN 3
- *	1_7 = PF7	COLOUMN 4
- 
- *	PF0 = COLOUMN 3
- *	PF1 = COLOUMN 1
- *	PF2 = ROW 3
- *	PF3 = ROW 1
- *	PF4 = ROW 2
- *	PF5 = ROW 4
- *	PF6 = COLOUMN 2
- *	PF7 = COLOUMN 4
- 
- 
- 
+ *  // This could be change if connections are different
+ *	PK0 = COLOUMN
+ *	PK1 = COLOUMN
+ *	PK2 = COLOUMN
+ *	PK3 = COLOUMN
+ *	PK4 = ROW
+ *	PK5 = ROW
+ *	PK6 = ROW
+ *	PK7 = ROW
  */
 
 #include <stdlib.h>
@@ -39,6 +28,10 @@
 #include "portmacro.h"
 
  KeyPad::KeyPad()
+{
+}
+
+KeyPad::~KeyPad()
 {
 }
 
@@ -60,9 +53,8 @@ char KeyPad::readKeyboard(){
 	vTaskDelay(8/portTICK_RATE_MS);
 	
 	char pressed_key = findKey(read_byte | (PINK & 0b11110000));
-	
+
 	// Wait for no key pressed anymore
-	
 	while((PINK & 0b11110000) != 0);
 	SendString("pressed key:\r\n");
 	SendInteger(pressed_key);
@@ -72,6 +64,10 @@ char KeyPad::readKeyboard(){
 
 char KeyPad::findKey(uint8_t pin_press)
 {
+	// Switch case for what key is pressed on pad
+	// Might need to be change if Inputs are not connected the 
+	// same way
+	
 	switch(pin_press) {
 		
 		case 0b01000010  :
@@ -111,8 +107,7 @@ char KeyPad::findKey(uint8_t pin_press)
 			return 'D';
 			
 		
-		// you can have any number of case statements.
-		default : //Optional
+		default :
 			return 'E';
 	}
 }

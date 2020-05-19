@@ -33,6 +33,11 @@ TouchDriver::TouchDriver()
 	initTouchDriver();
 }
 
+TouchDriver::~TouchDriver()
+{
+	
+}
+
 
 void TouchDriver::initTouchDriver()
 {
@@ -44,12 +49,13 @@ void TouchDriver::initTouchDriver()
 	/* BIT 1-0		= PD1/PD0 (Power-Down Mode Select Bits)					*/
 	/************************************************************************/
 	/************************************************************************/
+	/* DIN Byte																*/
 	/* A2-A0:																*/
 	/* (A2 = 0, A1 = 0, A0 = 1)		= Y-position                            */
 	/* (A2 = 1, A1 = 0, A0 = 1)		= X-position							*/
 	/* MODE							= 12bit = High							*/
-	/* SER/DFR						= Differential = Low					*/
-	/* PD1/PD0						= Device always powered = 11			*/
+	/* SER/DFR						= Differential = High					*/
+	/* PD1/PD0						= Device always powered = 00			*/
 	/************************************************************************/
 	
 	dinXByte = 0b10011100;
@@ -63,6 +69,7 @@ void TouchDriver::initTouchDriver()
 	EICRB = 0b00000010;
 	EIMSK |= 0b00010000;
 	
+	// Enable global Interrupts
 	sei();
 	
 }
@@ -92,6 +99,7 @@ uint8_t TouchDriver::readTouch(char coord)
     uint8_t delayTime = 8;
     uint8_t dinByte = 0;
     
+	// Makes is easy to toggle between receiveing x and y coordinates
     if (coord == 'X')
     {
         dinByte = dinXByte;
@@ -106,8 +114,10 @@ uint8_t TouchDriver::readTouch(char coord)
     
     // ChipSelect Set to 0    
     CS_PORT &= ~CS_PIN;
+	
     _delay_us(delayTime);
-    uint8_t result = 0;
+    
+	uint8_t result = 0;
     
     // DIN byte and pulse DCLK for Read X
     for (int i = 7; i >= 0; i--)
@@ -116,34 +126,26 @@ uint8_t TouchDriver::readTouch(char coord)
         
         DIN_PORT |= (((dinByte >> i)  & 0x01) << 5);
         
-        //_delay_us(5);
-        
         CLK_PORT |= CLK_PIN;
-        //_NOP();
+		
         _delay_us(delayTime);
-        
         
         CLK_PORT &= ~CLK_PIN;
         DIN_PORT &= ~BIT6_SHIFTED;
     }
-    
-    //_delay_us(delayTime*2);
         
     // Systematically read DOUT
-    
     for (int i = 7; i >= 0; i--)
     {
         _delay_us(delayTime);
         
         CLK_PORT |= CLK_PIN;
         _delay_us(delayTime);
-        //_NOP();
         CLK_PORT &= ~CLK_PIN;
         _delay_us(1);
         
         bool temp = (PINE & (1U << 5));
         
-        // Check this
         result |= (temp << i);
     }
     
@@ -153,14 +155,10 @@ uint8_t TouchDriver::readTouch(char coord)
         _delay_us(delayTime);
         CLK_PORT |= CLK_PIN;
         _delay_us(delayTime);
-        //_NOP();
         CLK_PORT &= ~CLK_PIN;
-        // Check this
     }
     
     CS_PORT |= CS_PIN;
-    
-    //eIntHappend = 255;
-    
+        
     return ~result;
 } 

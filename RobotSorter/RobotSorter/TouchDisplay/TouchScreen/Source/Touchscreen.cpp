@@ -18,24 +18,34 @@ Touchscreen::Touchscreen()
 {
 	TouchDriv = TouchDriver();
 	
+	// Class for making a Button on the screen
 	blueBnt = ButtonClass(20, 70, 120, 170, 29, 234, 2);
 	greenBnt = ButtonClass(200, 70, 300, 170, 44, 2, 234);
 	
 	DisplayInit();
 }
 
+Touchscreen::~Touchscreen()
+{
+}
 
 uint8_t Touchscreen::checkButtons(void)
 {
 	uint8_t x = 0;
 	uint8_t y = 0;
 	
+	// receive x and y by call by reference
 	TouchDriv.getCoordinates(&x, &y);
+	
+	// Print which can be uncommented
 	SendString("X value: ");
 	SendInteger(x);
 	SendString("y value: ");
 	SendInteger(y);
 	SendString("\r\n");
+	
+	// Check if touch is in between buttons on display. 1.33 is the scaling factor between touch and display.
+	// Max Touch Res is 255 while display is 320
 	if (x > blueBnt.startX/1.33 && x < blueBnt.endX/1.33 && y > blueBnt.startY && y < blueBnt.endY)
 	{
 		return 1;

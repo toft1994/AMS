@@ -20,7 +20,11 @@
 	 stateOfMachine = 'L';
  }
  
- bool LoginInterface::checkLogin()
+ LoginInterface::~LoginInterface()
+ {
+ }
+ 
+ void LoginInterface::checkLogin()
  {
 	 uint8_t userPressed = 0;
 	 uint8_t userPass[4];
@@ -29,16 +33,20 @@
 	 {
 		 char buf = keypad.readKeyboard();
 		 
+		 // If star is pressed.. Reset Keys pressed
 		 if (buf == 42)
 		 {
 			 userPressed = 0;
 		 }else
 		 {
+			 // Put key pressed into array
 			 userPass[userPressed] = buf;
 			 userPressed++; 
 		 }
 	 }
 	 
+	 
+	 // Check each of the entries in array if they match password
 	 for (uint8_t i = 0; i < 4; i++)
 	 {
 		 if (userPass[i] != passWord[i])
@@ -46,6 +54,8 @@
 			 setstateOfMachine('L');
 		 }
 	 }
+	 // If state is locked unlock it
+	 // If state is unlocked lock it
 	 if (getstateOfMachine() == 'L')
 	 {
 		 setstateOfMachine('U');
@@ -55,6 +65,8 @@
 	 }
  }
  
+ 
+ // Set and get Method for stateOfMachine
  char LoginInterface::getstateOfMachine()
  {
 	 return stateOfMachine;
@@ -62,5 +74,11 @@
  
  void LoginInterface::setstateOfMachine(char state)
  {
-	 stateOfMachine = state;
+	 if ((state != 'U') || (state != 'L'))
+	 {
+		 state = 'L';
+	 }else
+	 {
+		stateOfMachine = state; 
+	 }
  }
