@@ -51,7 +51,7 @@ uint8_t ColorSensor::getColor()
 	{		
 		if ( _colors[index].getRedPeriod() + 5 > redPeriod && _colors[index].getRedPeriod() - 5 < redPeriod )
 		{
-			if ( _colors[index].getBluePeriod() + 5 > bluePeriod && _colors[index].getBluePeriod() - 5 < bluePeriod )
+ 			if ( _colors[index].getBluePeriod() + 5 > bluePeriod && _colors[index].getBluePeriod() - 5 < bluePeriod )
 			{
 				if ( _colors[index].getGreenPeriod() + 5 > greenPeriod && _colors[index].getGreenPeriod() - 5 < greenPeriod )
 				{

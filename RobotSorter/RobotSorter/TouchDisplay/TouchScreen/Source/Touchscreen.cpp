@@ -21,6 +21,7 @@ Touchscreen::Touchscreen()
 	// Class for making a Button on the screen
 	blueBnt = ButtonClass(20, 70, 120, 170, 29, 234, 2);
 	greenBnt = ButtonClass(200, 70, 300, 170, 44, 2, 234);
+	flashRed = ButtonClass(0,0,320,240,255,0,0);
 	
 	DisplayInit();
 }
@@ -38,11 +39,11 @@ uint8_t Touchscreen::checkButtons(void)
 	TouchDriv.getCoordinates(&x, &y);
 	
 	// Print which can be uncommented
-	SendString("X value: ");
-	SendInteger(x);
-	SendString("y value: ");
-	SendInteger(y);
-	SendString("\r\n");
+	//SendString("X value: ");
+	//SendInteger(x);
+	//SendString("y value: ");
+	//SendInteger(y);
+	//SendString("\r\n");
 	
 	// Check if touch is in between buttons on display. 1.33 is the scaling factor between touch and display.
 	// Max Touch Res is 255 while display is 320
@@ -75,4 +76,9 @@ void Touchscreen::presentButtonsOnDisplay(void)
 
 	// Button Two
 	FillRectangle(greenBnt.startX, greenBnt.startY, greenBnt.width, greenBnt.height, greenBnt.colorRed, greenBnt.colorGreen, greenBnt.colorBlue);
+}
+
+void Touchscreen::flashRedOnDisplay(void)
+{
+	FillRectangle(flashRed.startX, flashRed.startY, flashRed.width, flashRed.height, flashRed.colorRed, flashRed.colorGreen, flashRed.colorBlue);
 }

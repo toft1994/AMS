@@ -53,7 +53,7 @@ void DisplayArm( void *pvParameters )
 			{
 				case 1U:
 				{
-					SendString("Adding color\r\n");
+					//SendString("Adding color\r\n");
 					csensor.addCalibrateColor( colorIndex );
 					colorIndex++;			
 					break;
@@ -61,9 +61,27 @@ void DisplayArm( void *pvParameters )
 		
 				case 2U:
 				{
-					SendString("Grabbing item\r\n");
-					armPtr->MoveItem( csensor.getColor() );
+					//SendString("Grabbing item\r\n");
+					uint8_t temp_color = csensor.getColor();
+					if (temp_color != 255)
+					{
+						armPtr->MoveItem( temp_color );
+					}
+					else
+					{
+						screen.flashRedOnDisplay();
+						vTaskDelay( 200 / portTICK_RATE_MS );
+						screen.presentButtonsOnDisplay();
+						vTaskDelay( 200 / portTICK_RATE_MS );
+						screen.flashRedOnDisplay();
+						vTaskDelay( 200 / portTICK_RATE_MS );
+						screen.presentButtonsOnDisplay();
+					}
+					break;
 				}
+				
+				default:
+				break;
 			}
 		}
 	}

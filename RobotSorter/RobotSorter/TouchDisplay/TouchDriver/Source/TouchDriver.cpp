@@ -81,12 +81,17 @@ ISR (INT4_vect)
 
 void TouchDriver::getCoordinates(uint8_t *x_ptr, uint8_t *y_ptr)
 {	
-	while(eIntHappend != 0);
-	
-	//taskENTER_CRITICAL();
+	uint16_t timeout = 0;
+	while(eIntHappend != 0)
+	{
+		timeout++;
+		if (timeout > 255)
+		{
+			return;
+		}
+	}
 	*x_ptr = readTouch('X');
 	*y_ptr = readTouch('Y');
-	//taskEXIT_CRITICAL();
 	_delay_ms( 50 );
 	eIntHappend = 255;
 	

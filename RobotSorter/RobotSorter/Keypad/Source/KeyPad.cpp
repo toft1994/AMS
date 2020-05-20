@@ -56,9 +56,9 @@ char KeyPad::readKeyboard(){
 
 	// Wait for no key pressed anymore
 	while((PINK & 0b11110000) != 0);
-	SendString("pressed key:\r\n");
-	SendInteger(pressed_key);
-	SendString("\r\n");
+	//SendString("pressed key:\r\n");
+	//SendInteger(pressed_key);
+	//SendString("\r\n");
 	return pressed_key;
 }
 

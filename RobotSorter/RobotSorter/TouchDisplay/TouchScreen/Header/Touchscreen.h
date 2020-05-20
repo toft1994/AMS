@@ -40,6 +40,8 @@ class Touchscreen
 	*/
 	void presentButtonsOnDisplay(void);
 	
+	void flashRedOnDisplay(void);
+	
 	private:
 	
 	/**
@@ -54,6 +56,12 @@ class Touchscreen
 	*    Green ButtonClass Object
 	*/
 	ButtonClass greenBnt;
+	/**
+	*    Flash Red ButtonClass Object
+	*/
+	ButtonClass flashRed;
+	
+	
 	
 };
 

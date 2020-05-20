@@ -27,7 +27,7 @@
  void LoginInterface::checkLogin()
  {
 	 uint8_t userPressed = 0;
-	 uint8_t userPass[4];
+	 volatile uint8_t userPass[4];
 	 
 	 while(userPressed < 4)
 	 {
@@ -45,23 +45,28 @@
 		 }
 	 }
 	 
-	 
+	 bool all_okay = true;
 	 // Check each of the entries in array if they match password
 	 for (uint8_t i = 0; i < 4; i++)
 	 {
 		 if (userPass[i] != passWord[i])
 		 {
 			 setstateOfMachine('L');
+			 all_okay = false;
 		 }
 	 }
 	 // If state is locked unlock it
 	 // If state is unlocked lock it
-	 if (getstateOfMachine() == 'L')
+	 
+	 if (all_okay)
 	 {
-		 setstateOfMachine('U');
-	 }else
-	 {
-		 setstateOfMachine('L');	
+		 if (getstateOfMachine() == 'L')
+		 {
+			 setstateOfMachine('U');
+		 }else
+		 {
+			 setstateOfMachine('L');
+		 }
 	 }
  }
  
@@ -74,11 +79,16 @@
  
  void LoginInterface::setstateOfMachine(char state)
  {
-	 if ((state != 'U') || (state != 'L'))
-	 {
-		 state = 'L';
-	 }else
-	 {
-		stateOfMachine = state; 
+	 
+	 switch(state){
+		 case 'U':
+			stateOfMachine = 'U';
+			break;
+		 case 'L':
+			stateOfMachine = 'L';
+			break;
+		 default:
+			stateOfMachine = 'L';
+			break;
 	 }
  }

@@ -12,6 +12,11 @@
 // default constructor
 Color::Color()
 {
+	_redPeriod = 0;
+	_bluePeriod = 0;
+	_greenPeriod = 0;
+	_whitePeriod = 0;
+	_colorIndex = 255;
 }
 
 // default destructor

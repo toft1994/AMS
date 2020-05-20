@@ -43,7 +43,7 @@ class LoginInterface
 	/**
 	*    Array containing the passWord 
 	*/
-	uint8_t passWord[4];
+	volatile uint8_t passWord[4];
 	
 	/**
 	*    char containing whether machine is Locked or Unlocked
