@@ -11,8 +11,6 @@
 #include "TouchDriver.h"
 #include "TFTdriver.h"
 #include "ButtonClass.h"
-#include "uart.h"
-
 
 Touchscreen::Touchscreen()
 {
@@ -37,14 +35,7 @@ uint8_t Touchscreen::checkButtons(void)
 	
 	// receive x and y by call by reference
 	TouchDriv.getCoordinates(&x, &y);
-	
-	// Print which can be uncommented
-	//SendString("X value: ");
-	//SendInteger(x);
-	//SendString("y value: ");
-	//SendInteger(y);
-	//SendString("\r\n");
-	
+		
 	// Check if touch is in between buttons on display. 1.33 is the scaling factor between touch and display.
 	// Max Touch Res is 255 while display is 320
 	if (x > blueBnt.startX/1.33 && x < blueBnt.endX/1.33 && y > blueBnt.startY && y < blueBnt.endY)

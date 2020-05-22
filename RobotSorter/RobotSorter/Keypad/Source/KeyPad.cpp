@@ -20,7 +20,6 @@
 #include <stdlib.h>
 #include <avr/io.h>
 #include "KeyPad.h"
-#include "uart.h"
 
 /* RTOS include */
 #include "FreeRTOS.h"
@@ -56,9 +55,7 @@ char KeyPad::readKeyboard(){
 
 	// Wait for no key pressed anymore
 	while((PINK & 0b11110000) != 0);
-	//SendString("pressed key:\r\n");
-	//SendInteger(pressed_key);
-	//SendString("\r\n");
+
 	return pressed_key;
 }
 

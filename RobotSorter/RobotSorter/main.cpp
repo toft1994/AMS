@@ -12,7 +12,6 @@
 #include "Touchscreen.h"
 #include "KeyPad.h"
 #include "LoginInterface.h"
-#include "uart.h"
 
 /* RTOS include */
 #include "FreeRTOS.h"
@@ -53,7 +52,6 @@ void DisplayArm( void *pvParameters )
 			{
 				case 1U:
 				{
-					//SendString("Adding color\r\n");
 					csensor.addCalibrateColor( colorIndex );
 					colorIndex++;			
 					break;
@@ -61,7 +59,6 @@ void DisplayArm( void *pvParameters )
 		
 				case 2U:
 				{
-					//SendString("Grabbing item\r\n");
 					uint8_t temp_color = csensor.getColor();
 					if (temp_color != 255)
 					{
@@ -70,11 +67,8 @@ void DisplayArm( void *pvParameters )
 					else
 					{
 						screen.flashRedOnDisplay();
-						vTaskDelay( 200 / portTICK_RATE_MS );
-						screen.presentButtonsOnDisplay();
-						vTaskDelay( 200 / portTICK_RATE_MS );
-						screen.flashRedOnDisplay();
-						vTaskDelay( 200 / portTICK_RATE_MS );
+						vTaskDelay( 1000 / portTICK_RATE_MS );
+						screen.clearScreen();
 						screen.presentButtonsOnDisplay();
 					}
 					break;
@@ -90,7 +84,6 @@ void DisplayArm( void *pvParameters )
 int main(void)
 {		
 	Robotarm arm = Robotarm();
-	InitUART(9600,8,'N');
 	xTaskCreate(LoginKeyPad,  ( signed char * ) "Keypad Task", configMAIN_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
 	xTaskCreate(DisplayArm,  ( signed char * ) "Display + Arm Task", configMAIN_STACK_SIZE, &arm, tskIDLE_PRIORITY, NULL);
 	vTaskStartScheduler();

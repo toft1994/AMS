@@ -73,7 +73,7 @@ class ButtonClass
 	/**
 	*    Width of the button. Calculated by startX and endX
 	*/
-	uint8_t width;
+	uint16_t width;
 	
 	/**
 	*    Color code for the red color (RGB)
